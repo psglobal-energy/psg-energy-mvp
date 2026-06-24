@@ -20,7 +20,7 @@ Projet 100% front-end statique — fichiers HTML autonomes, zéro framework, zé
 | `psg-dashboard-admin.html` | Dashboard interne CRM/pipeline — **NE PAS COMMITTER** | Privé |
 | `mentions-legales.html` | Mentions légales LCEN | Public |
 | `cgv.html` | Conditions Générales de Vente (loi Hamon, rétractation 14j) | Public |
-| `politique-confidentialite.html` | Politique RGPD — **À CRÉER** | Public |
+| `politique-confidentialite.html` | Politique de confidentialité RGPD (10 sections) | Public |
 
 ## Règles absolues
 
@@ -59,9 +59,26 @@ Tous les fichiers partagent les mêmes tokens (copiés manuellement) :
 - `--ink:#08091A` / `--surf:#F2F5FB` / `--ff:'Outfit'` / `--fb:'Inter'`
 - Toute modification de charte doit être propagée dans tous les fichiers HTML
 
-## Points légaux en cours
+## Conformité CNIL / RGPD — règles à respecter impérativement
 
+### Ce qui est déjà en place (ne pas régresser)
+- **Fonts auto-hébergées** : `fonts.googleapis.com` interdit — décision CNIL 10/02/2022 (tribunal Munich, Allemagne également). Toujours `<link rel="stylesheet" href="fonts/fonts.css">`.
+- **Aucun cookie tiers** : pas de Google Analytics, Meta Pixel, Hotjar, etc. → aucun bandeau de consentement requis (pas de cookies non-essentiels).
+- **Pas de clé API côté client** : les appels Anthropic passent par un proxy serveur uniquement.
+- **`politique-confidentialite.html`** : créée, couvre les 10 obligations RGPD (art. 13/14).
+- **`mentions-legales.html`** : conforme LCEN art. 6 (hébergeur, éditeur, DPO).
+- **`cgv.html`** : loi Hamon — droit de rétractation 14 jours, médiateur MEDICYS.
+
+### Règles à respecter lors de toute modification
+1. **Ne jamais introduire de ressource externe** (CDN, image tracker, font, analytics) sans vérifier qu'elle ne transmet pas d'IP à un serveur hors UE sans consentement préalable.
+2. **Tout nouveau formulaire** doit afficher une mention d'information RGPD (art. 13) au point de collecte : finalité, responsable, durée de conservation, droits, lien vers `politique-confidentialite.html`.
+3. **Si des cookies sont introduits** (ex. : analytics, A/B test), un bandeau de consentement conforme CNIL 2022 est obligatoire avant tout dépôt — les cookies analytiques ne sont pas exemptés sans anonymisation stricte.
+4. **Sous-traitants** : tout nouveau prestataire traitant des données personnelles doit être ajouté à la section 4 de `politique-confidentialite.html` avec base légale et localisation des serveurs.
+5. **Durées de conservation** : ne pas collecter de données sans durée définie dans `politique-confidentialite.html`.
+6. **Email DPO** `dpo@psg-energy.fr` doit être opérationnel avant la mise en production (délai de réponse légal : 1 mois, RGPD art. 12).
+
+### Points légaux encore en attente
 - SIREN non encore disponible (immatriculation Jurisociété N°1727182) — mentionné dans `mentions-legales.html` et footer
-- `politique-confidentialite.html` référencée dans `cgv.html` mais pas encore créée
-- Emails `contact@psg-energy.fr` et `dpo@psg-energy.fr` à créer sur OVH avant mise en ligne
-- Webhook Make.com à configurer dans la constante `LEAD_WEBHOOK` de `psg-energy-site.html`
+- Emails `contact@psg-energy.fr` et `dpo@psg-energy.fr` à créer sur OVH **avant mise en ligne**
+- Connexion Zoho CRM dans Make.com (OAuth, UI Make.com) — leads non encore transmis au CRM
+- Tester le formulaire en production et vérifier réception dans Zoho CRM
