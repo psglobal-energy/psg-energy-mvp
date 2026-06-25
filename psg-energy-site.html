@@ -395,7 +395,7 @@ section{padding:72px 0;}
     <div class="hero-content">
       <div class="hero-eyebrow">Régie Commerciale Officielle · France & Afrique</div>
       <h1>Nous vendons l'énergie<br>propre à votre place.</h1>
-      <p class="hero-sub">PSG Energy commercialise les solutions des meilleurs installateurs RGE français. Vous cumulez jusqu'à <strong style="color:var(--orV)">€28 000 d'aides d'État</strong>. Devis gratuit, sans engagement, réponse sous 24h.</p>
+      <p class="hero-sub">PSG Energy commercialise les solutions des meilleurs installateurs RGE français. Vous cumulez jusqu'à <strong style="color:var(--orV)">€32 000 d'aides d'État</strong>. Devis gratuit, sans engagement, réponse sous 24h.</p>
       <div class="hero-btns">
         <a href="#simulateur" class="btn-primary">💰 Simuler mes aides gratuitement</a>
         <a href="#contact" class="btn-secondary">📞 Être rappelé</a>
@@ -477,7 +477,8 @@ section{padding:72px 0;}
         <h2 style="color:#fff;margin-bottom:14px;">Calculez vos aides<br>en 2 minutes</h2>
         <p style="color:rgba(255,255,255,.7);margin-bottom:28px;">Données officielles ANAH · ADEME · CEE. 100% gratuit, sans engagement et confidentiel.</p>
         <div class="sim-features">
-          <div class="sim-feat"><div class="sim-feat-ico">💙</div><div><div class="sim-feat-title">MaPrimeRénov</div><div class="sim-feat-text">Jusqu'à €20 000 selon votre tranche fiscale (ANAH 2026)</div></div></div>
+          <div class="sim-feat"><div class="sim-feat-ico">💙</div><div><div class="sim-feat-title">MaPrimeRénov</div><div class="sim-feat-text">Jusqu'à €30 000 selon votre tranche fiscale (ANAH 2026)</div></div></div>
+          <div class="sim-feat"><div class="sim-feat-ico">🟣</div><div><div class="sim-feat-title">Prime MAR</div><div class="sim-feat-text">Mon Accompagnateur Rénov' — jusqu'à €2 000 supplémentaires</div></div></div>
           <div class="sim-feat"><div class="sim-feat-ico">🟡</div><div><div class="sim-feat-title">Certificats CEE</div><div class="sim-feat-text">Primes énergie des obligés — cumulables avec MPR</div></div></div>
           <div class="sim-feat"><div class="sim-feat-ico">🟢</div><div><div class="sim-feat-title">Éco-PTZ</div><div class="sim-feat-text">Prêt à 0% jusqu'à 50 000€ pour financer le reste à charge</div></div></div>
           <div class="sim-feat"><div class="sim-feat-ico">🔵</div><div><div class="sim-feat-title">TVA 5.5%</div><div class="sim-feat-text">Au lieu de 20% — économie directe sur votre devis</div></div></div>
@@ -517,7 +518,7 @@ section{padding:72px 0;}
           <div class="sim-q"><div class="sim-qlabel">Votre projet</div>
             <div style="display:flex;flex-direction:column;gap:6px;" id="projList">
               <button class="sc on" style="text-align:left;padding:9px 12px;display:flex;justify-content:space-between;" onclick="sp(this,'pac',14000)"><span>♨️ PAC Air/Eau</span><span style="color:var(--vert);font-weight:800;">+€12k</span></button>
-              <button class="sc" style="text-align:left;padding:9px 12px;display:flex;justify-content:space-between;" onclick="sp(this,'reno',35000)"><span>🏡 Rénovation Globale</span><span style="color:var(--vert);font-weight:800;">+€28k</span></button>
+              <button class="sc" style="text-align:left;padding:9px 12px;display:flex;justify-content:space-between;" onclick="sp(this,'reno',35000)"><span>🏡 Rénovation Globale</span><span style="color:var(--vert);font-weight:800;">+€32k</span></button>
               <button class="sc" style="text-align:left;padding:9px 12px;display:flex;justify-content:space-between;" onclick="sp(this,'pv',22000)"><span>☀️ Panneaux PV</span><span style="color:var(--vert);font-weight:800;">+€7k</span></button>
               <button class="sc" style="text-align:left;padding:9px 12px;display:flex;justify-content:space-between;" onclick="sp(this,'iso',8000)"><span>🧱 Isolation</span><span style="color:var(--vert);font-weight:800;">+€9k</span></button>
               <button class="sc" style="text-align:left;padding:9px 12px;display:flex;justify-content:space-between;" onclick="sp(this,'cet',3200)"><span>💧 Chauffe-eau Thermo.</span><span style="color:var(--vert);font-weight:800;">+€2k</span></button>
@@ -777,7 +778,7 @@ section{padding:72px 0;}
 const D={statut:'proprio',type:'maison',annee:'48-74',tranche:2,tl:'Modeste',foyer:1,proj:'pac',cost:14000};
 const AC={
   pac:{l:'PAC Air/Eau',b:[{m:12000,c:3500},{m:7000,c:2200},{m:4000,c:1600},{m:1500,c:800}],tva:true,ptz:50000},
-  reno:{l:'Rénovation Globale',b:[{m:20000,c:5000},{m:15000,c:3500},{m:10000,c:2000},{m:5000,c:1000}],tva:true,ptz:50000,bon:.10},
+  reno:{l:'Rénovation Globale',b:[{m:30000,c:5000},{m:20000,c:3500},{m:12000,c:2000},{m:6000,c:1000}],tva:true,ptz:50000,bon:.10,mar:2000},
   pv:{l:'Panneaux PV',b:[{m:0,c:0},{m:0,c:0},{m:0,c:0},{m:0,c:0}],tva:true,ptz:0,prime:1530},
   iso:{l:'Isolation Thermique',b:[{m:7000,c:2500},{m:5000,c:1800},{m:3000,c:1200},{m:1500,c:600}],tva:true,ptz:50000},
   cet:{l:'Chauffe-eau Thermo.',b:[{m:1200,c:400},{m:800,c:300},{m:400,c:200},{m:0,c:100}],tva:true,ptz:0},
@@ -819,6 +820,7 @@ function calcAides(){
   if(cfg.prime>0){rows.push({l:'Prime Autoconsommation EDF OA',v:cfg.prime,cl:'var(--vert)'});total+=cfg.prime;}
   if(cfg.adv>0){rows.push({l:'Crédit ADVENIR',v:cfg.adv,cl:'var(--vert)'});total+=cfg.adv;}
   if(cfg.bon){const bo=Math.round(b.m*cfg.bon);rows.push({l:'Bonus Rénovation Globale +10%',v:bo,cl:'var(--vert)'});total+=bo;}
+  if(cfg.mar>0){rows.push({l:'Prime MAR — Mon Accompagnateur Rénov\'',v:cfg.mar,cl:'var(--bleu)'});total+=cfg.mar;}
   const rac=Math.max(0,D.cost-total);
   const res=document.getElementById('simResult');res.style.display='block';
   document.getElementById('srAmount').textContent='€'+total.toLocaleString('fr-FR');
