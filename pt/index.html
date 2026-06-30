@@ -1,0 +1,427 @@
+<!-- DRAFT - À valider avant mise en ligne -->
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PSG Energy — Ajudas do Estado para renovação energética em Île-de-France | Até 32.000 €</title>
+<meta name="description" content="Obtenha até 32.000 € em ajudas do Estado francês. PSG Energy liga proprietários aos melhores instaladores RGE em Seine-et-Marne e Essonne. Orçamento gratuito.">
+<link rel="canonical" href="https://psg-energy.fr/pt/">
+<link rel="alternate" hreflang="fr" href="https://psg-energy.fr/">
+<link rel="alternate" hreflang="en" href="https://psg-energy.fr/en/">
+<link rel="alternate" hreflang="ar" href="https://psg-energy.fr/ar/">
+<link rel="alternate" hreflang="pt" href="https://psg-energy.fr/pt/">
+<link rel="alternate" hreflang="x-default" href="https://psg-energy.fr/">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/shared/design-system.css">
+<style>
+.lang-bar { background:var(--ink); border-bottom:1px solid rgba(255,255,255,.08); padding:8px 24px; display:flex; align-items:center; justify-content:center; gap:8px; }
+.lang-bar-txt { font-size:.8rem; color:rgba(255,255,255,.5); font-family:var(--fb); margin-right:4px; }
+.lp { padding:4px 10px; border-radius:100px; font-size:.78rem; font-weight:700; border:1.5px solid rgba(255,255,255,.15); color:rgba(255,255,255,.55); cursor:pointer; background:none; font-family:var(--ff); transition:all .18s; text-decoration:none; display:inline-block; }
+.lp:hover, .lp.active { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.35); color:#fff; }
+.lang-switcher { display:flex; gap:6px; align-items:center; }
+.lang-switcher a { font-size:.78rem; font-weight:700; color:var(--ink3); padding:3px 8px; border-radius:6px; transition:all .15s; }
+.lang-switcher a:hover, .lang-switcher a.active { color:var(--blue); background:var(--blueL); }
+.hero { background:linear-gradient(135deg,#08091A 0%,#1A2050 60%,#0D2A80 100%); padding:80px 0 64px; position:relative; overflow:hidden; }
+.hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 70% 50%,rgba(26,77,255,.25) 0%,transparent 70%); pointer-events:none; }
+.hero-inner { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; position:relative; }
+.hero-badge-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+.hero-badge { padding:6px 14px; border-radius:100px; font-size:.78rem; font-weight:700; border:1.5px solid; }
+.hero-badge--g { background:rgba(0,196,140,.15); border-color:rgba(0,196,140,.4); color:#00C48C; }
+.hero-badge--b { background:rgba(26,77,255,.15); border-color:rgba(26,77,255,.4); color:#7CA3FF; }
+.hero-h1 { font-size:clamp(2.2rem,4.5vw,3.4rem); font-weight:900; line-height:1.08; letter-spacing:-.025em; color:#fff; margin-bottom:20px; }
+.hero-h1 .accent { color:#00C48C; }
+.hero-sub { font-size:1.1rem; color:rgba(255,255,255,.7); font-family:var(--fb); line-height:1.6; margin-bottom:32px; max-width:480px; }
+.hero-cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px; }
+.hero-social { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.hero-social-item { font-size:.85rem; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:6px; }
+.hero-social-item strong { color:#fff; }
+.hero-stars { color:#F5A000; font-size:.9rem; }
+.sim-box { background:rgba(255,255,255,.06); backdrop-filter:blur(16px); border:1.5px solid rgba(255,255,255,.12); border-radius:20px; padding:32px; position:relative; }
+.sim-box::before { content:''; position:absolute; top:-1px; left:24px; right:24px; height:3px; background:linear-gradient(90deg,#1A4DFF,#00C48C); border-radius:100px; }
+.sim-title { font-size:1rem; font-weight:800; color:#fff; margin-bottom:20px; text-align:center; }
+.sim-title span { color:#00C48C; }
+.sim-field { margin-bottom:14px; }
+.sim-label { font-size:.78rem; font-weight:700; color:rgba(255,255,255,.6); margin-bottom:6px; text-transform:uppercase; letter-spacing:.05em; display:block; }
+.sim-select, .sim-input { width:100%; padding:12px 14px; border-radius:10px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.08); color:#fff; font-family:var(--ff); font-size:.95rem; }
+.sim-select option { background:#1A2050; color:#fff; }
+.sim-btn { width:100%; padding:16px; border-radius:12px; background:linear-gradient(135deg,#1A4DFF,#0033DD); color:#fff; font-family:var(--ff); font-size:1.05rem; font-weight:900; border:none; cursor:pointer; margin-top:6px; box-shadow:0 4px 20px rgba(26,77,255,.4); transition:all .2s; }
+.sim-btn:hover { transform:translateY(-2px); }
+.sim-result { display:none; margin-top:20px; padding:20px; border-radius:12px; background:rgba(0,196,140,.1); border:1.5px solid rgba(0,196,140,.3); }
+.sim-result-amount { font-size:2.2rem; font-weight:900; color:#00C48C; text-align:center; }
+.sim-result-label { font-size:.85rem; color:rgba(255,255,255,.6); text-align:center; margin-top:4px; font-family:var(--fb); }
+.sim-result-rows { margin-top:14px; display:flex; flex-direction:column; gap:8px; }
+.sim-row { display:flex; justify-content:space-between; font-size:.875rem; padding:8px 0; border-bottom:1px solid rgba(255,255,255,.08); }
+.sim-row:last-child { border:none; }
+.sim-row-label { color:rgba(255,255,255,.65); font-family:var(--fb); }
+.sim-row-val { font-weight:700; color:#fff; }
+.sim-row-val.green { color:#00C48C; }
+.sim-cta2 { width:100%; margin-top:14px; padding:14px; border-radius:10px; background:linear-gradient(135deg,#00C48C,#00A376); color:#fff; font-family:var(--ff); font-size:.95rem; font-weight:900; border:none; cursor:pointer; transition:all .2s; }
+.stats-bar { background:var(--ink); padding:24px 0; }
+.stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.stat-item { text-align:center; padding:12px 16px; border-right:1px solid rgba(255,255,255,.08); }
+.stat-item:last-child { border:none; }
+.stat-val { font-size:2rem; font-weight:900; color:#fff; line-height:1; }
+.stat-val .unit { font-size:1.1rem; }
+.stat-lbl { font-size:.8rem; color:rgba(255,255,255,.5); font-family:var(--fb); margin-top:4px; }
+.zone-band { background:#F0F4FF; padding:36px 0; border-top:2px solid rgba(26,77,255,.08); }
+.zone-text { font-size:.98rem; color:var(--ink2); font-family:var(--fb); line-height:1.7; text-align:center; max-width:660px; margin:0 auto; }
+.testi-card { background:var(--white); border-radius:20px; padding:32px 40px; max-width:680px; margin:0 auto; border-left:4px solid var(--blue); box-shadow:var(--sh2); }
+.testi-quote { font-size:1.05rem; color:var(--ink); font-family:var(--fb); line-height:1.7; font-style:italic; margin-bottom:16px; }
+.testi-author { font-size:.88rem; font-weight:700; color:var(--blue); }
+.confiance-band { background:var(--greenL); padding:36px 0; border-top:2px solid rgba(0,196,140,.12); }
+.confiance-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.confiance-item { font-size:.9rem; color:var(--ink2); font-family:var(--fb); line-height:1.6; }
+.confiance-item strong { color:var(--ink); display:block; margin-bottom:4px; }
+.aides-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.aide-card { border-radius:16px; padding:24px; border:1.5px solid var(--bdr); background:#fff; }
+.aide-ico { font-size:2rem; margin-bottom:12px; }
+.aide-name { font-size:1rem; font-weight:800; color:var(--ink); margin-bottom:6px; }
+.aide-amount { font-size:1.6rem; font-weight:900; margin-bottom:8px; }
+.aide-desc { font-size:.85rem; color:var(--ink3); font-family:var(--fb); line-height:1.5; }
+.aide-tag { display:inline-block; margin-top:12px; padding:4px 10px; border-radius:100px; font-size:.75rem; font-weight:700; }
+.process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; position:relative; }
+.process-steps::before { content:''; position:absolute; top:28px; left:calc(12.5% + 12px); right:calc(12.5% + 12px); height:2px; background:linear-gradient(90deg,var(--blue),var(--green)); }
+.proc-step { text-align:center; position:relative; }
+.proc-num { width:56px; height:56px; border-radius:50%; background:linear-gradient(135deg,var(--blue),var(--blueD)); color:#fff; font-size:1.3rem; font-weight:900; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; position:relative; z-index:1; box-shadow:0 4px 16px rgba(26,77,255,.3); }
+.proc-title { font-size:.95rem; font-weight:800; color:var(--ink); margin-bottom:6px; }
+.proc-desc { font-size:.82rem; color:var(--ink3); font-family:var(--fb); line-height:1.5; }
+.expert-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.expert-card { border-radius:16px; padding:28px; border:1.5px solid var(--bdr); background:#fff; text-align:center; }
+.exp-av { width:64px; height:64px; border-radius:50%; font-size:1.5rem; font-weight:900; color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
+.exp-name { font-size:1.05rem; font-weight:800; color:var(--ink); }
+.exp-titre { font-size:.82rem; color:var(--ink3); font-family:var(--fb); margin-bottom:12px; }
+.exp-note { color:#F5A000; font-size:.9rem; font-weight:700; }
+.exp-args { margin-top:14px; text-align:left; display:flex; flex-direction:column; gap:8px; }
+.exp-arg { font-size:.82rem; color:var(--ink2); font-family:var(--fb); line-height:1.4; display:flex; gap:6px; }
+.exp-arg::before { content:'✓'; color:var(--green); font-weight:700; flex-shrink:0; }
+.faq-list { display:flex; flex-direction:column; gap:0; border-radius:16px; overflow:hidden; border:1.5px solid var(--bdr); }
+.faq-item { border-bottom:1px solid var(--bdr); }
+.faq-item:last-child { border:none; }
+.faq-q { width:100%; padding:20px 24px; text-align:left; font-family:var(--ff); font-size:.95rem; font-weight:700; color:var(--ink); background:#fff; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px; transition:background .15s; }
+.faq-q:hover { background:var(--surf); }
+.faq-arrow { font-size:1rem; color:var(--blue); transition:transform .25s; flex-shrink:0; }
+.faq-a { display:none; padding:0 24px 20px; font-size:.9rem; color:var(--ink2); font-family:var(--fb); line-height:1.6; }
+.faq-item.open .faq-arrow { transform:rotate(180deg); }
+.faq-item.open .faq-a { display:block; }
+.cta-band { background:linear-gradient(135deg,#08091A,#1A2050); padding:80px 0; text-align:center; }
+.cta-band .h2 { color:#fff; margin-bottom:16px; }
+.cta-band .lead { color:rgba(255,255,255,.7); margin-bottom:40px; }
+.cta-form-inline { display:flex; gap:12px; max-width:520px; margin:0 auto; flex-wrap:wrap; }
+.cta-inp { flex:1; min-width:200px; padding:16px 18px; border-radius:12px; border:1.5px solid rgba(255,255,255,.15); background:rgba(255,255,255,.08); color:#fff; font-family:var(--ff); font-size:1rem; }
+.cta-inp::placeholder { color:rgba(255,255,255,.4); }
+.cta-submit { padding:16px 28px; border-radius:12px; background:linear-gradient(135deg,#00C48C,#00A376); color:#fff; font-family:var(--ff); font-size:1rem; font-weight:900; border:none; cursor:pointer; box-shadow:0 4px 16px rgba(0,196,140,.3); transition:all .2s; white-space:nowrap; }
+.cta-submit:hover { transform:translateY(-2px); }
+.cta-mention { font-size:.75rem; color:rgba(255,255,255,.4); font-family:var(--fb); margin-top:14px; }
+.cta-confirm { display:none; color:#00C48C; font-weight:700; font-size:1rem; margin-top:14px; }
+#elia-bubble { position:fixed; bottom:24px; right:24px; z-index:1000; }
+.elia-btn { width:60px; height:60px; border-radius:50%; background:linear-gradient(135deg,#1A4DFF,#00C48C); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:1.6rem; box-shadow:0 4px 20px rgba(26,77,255,.4); transition:all .2s; position:relative; }
+.elia-dot { position:absolute; top:2px; right:2px; width:14px; height:14px; border-radius:50%; background:#00C48C; border:2px solid #fff; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{transform:scale(1);}50%{transform:scale(1.2);} }
+.elia-label { position:absolute; right:68px; bottom:50%; transform:translateY(50%); background:var(--ink); color:#fff; padding:6px 12px; border-radius:8px; font-size:.78rem; font-weight:700; white-space:nowrap; opacity:0; transition:opacity .2s; pointer-events:none; }
+#elia-bubble:hover .elia-label { opacity:1; }
+@media(max-width:900px) { .hero-inner{grid-template-columns:1fr;gap:40px;} .stats-grid{grid-template-columns:repeat(2,1fr);} .aides-grid{grid-template-columns:1fr 1fr;} .process-steps{grid-template-columns:1fr 1fr;} .process-steps::before{display:none;} .expert-cards{grid-template-columns:1fr;} .confiance-grid{grid-template-columns:1fr;} }
+@media(max-width:600px) { .hero{padding:56px 0 48px;} .aides-grid{grid-template-columns:1fr;} .stats-grid{grid-template-columns:1fr 1fr;} .process-steps{grid-template-columns:1fr;} .cta-form-inline{flex-direction:column;} .cta-inp,.cta-submit{width:100%;} }
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-bar-txt">🌍 Escolha o seu idioma</span>
+  <a class="lp" href="/">🇫🇷 FR</a>
+  <a class="lp" href="/en/">🇬🇧 EN</a>
+  <a class="lp" href="/ar/">🇸🇦 AR</a>
+  <a class="lp active" href="/pt/">🇧🇷 PT</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">PSG<span>Energy</span></a>
+  <nav class="lang-switcher">
+    <a href="/">FR</a>
+    <a href="/en/">EN</a>
+    <a href="/ar/">AR</a>
+    <a href="/pt/" class="active">PT</a>
+  </nav>
+  <div class="nav-links">
+    <a href="/simulateur/" class="nav-link">Simulador</a>
+    <a href="/solutions/" class="nav-link">Soluções</a>
+    <a href="/partenaires/login.html" class="nav-link">Parceiros</a>
+    <a href="/afrique/" class="nav-link">África</a>
+  </div>
+  <a href="#contact" class="btn btn--primary btn--sm">Marcação Gratuita</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge-row">
+          <span class="hero-badge hero-badge--g">✓ ANAH 2026 Oficial</span>
+          <span class="hero-badge hero-badge--b">⚡ Resposta em 24h</span>
+          <span class="hero-badge hero-badge--g">🏆 Especialistas RGE Certificados</span>
+        </div>
+        <h1 class="hero-h1">Vendemos energia<br>limpa <span class="accent">em seu lugar.</span></h1>
+        <p class="hero-sub">A PSG Energy comercializa as soluções dos melhores instaladores RGE franceses. Acumule até 32 000 € em ajudas do Estado. Orçamento gratuito, sem compromisso, resposta em 24h.</p>
+        <div class="hero-cta-row">
+          <a href="/simulateur/" class="btn btn--green btn--lg">💰 Simular as minhas ajudas gratuitamente</a>
+          <a href="#contact" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,.3);color:#fff;">📞 Pedir uma chamada</a>
+        </div>
+        <div class="hero-social">
+          <div class="hero-social-item"><span class="hero-stars">★★★★★</span> <span><strong>4,9/5</strong> · 127 avaliações de clientes</span></div>
+          <div class="hero-social-item">🏅 <strong>RGE</strong> QualiPAC · Qualibat</div>
+          <div class="hero-social-item">📍 <strong>IDF</strong> 77 · 94 · 91 · 93</div>
+        </div>
+      </div>
+      <div class="sim-box">
+        <div class="sim-title">⚡ Calcule os seus subsídios em <span>60 segundos</span></div>
+        <div class="sim-field">
+          <label class="sim-label">A sua situação fiscal</label>
+          <select class="sim-select" id="h-tranche">
+            <option value="">— Selecione —</option>
+            <option value="T1">Muito baixo (rendimento &lt; 21 805 €/ano)</option>
+            <option value="T2">Baixo (&lt; 26 939 €/ano)</option>
+            <option value="T3">Intermédio (&lt; 40 018 €/ano)</option>
+            <option value="T4">Superior (acima)</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label class="sim-label">Obras previstas</label>
+          <select class="sim-select" id="h-geste">
+            <option value="">— Selecione —</option>
+            <option value="pac_air_eau">♨️ Bomba de calor ar/água</option>
+            <option value="iso_combles">🧱 Isolamento de telhado</option>
+            <option value="iso_murs_ext">🏠 Isolamento de paredes externas</option>
+            <option value="menuiseries">🪟 Janelas / Portas-janelas</option>
+            <option value="vmc">💨 VMC Duplo Fluxo</option>
+            <option value="cet">💧 Esquentador termodinâmico</option>
+            <option value="pv">☀️ Painéis solares</option>
+          </select>
+        </div>
+        <div class="sim-field">
+          <label class="sim-label">Código postal</label>
+          <input class="sim-input" type="text" id="h-cp" placeholder="ex : 77100" maxlength="5" inputmode="numeric">
+        </div>
+        <button class="sim-btn" onclick="simulerRapide()">Calcular os meus subsídios →</button>
+        <div class="sim-result" id="sim-result">
+          <div class="sim-result-amount" id="sr-total">0 €</div>
+          <div class="sim-result-label">de subsídios estimados para o seu projeto</div>
+          <div class="sim-result-rows" id="sr-rows"></div>
+          <button class="sim-cta2" onclick="location.href='/simulateur/'">Simulação completa + Orçamento grátis →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-val">até 32k<span class="unit">€</span></div><div class="stat-lbl">Subsídios ANAH 2026 acumulados</div></div>
+      <div class="stat-item"><div class="stat-val">71<span class="unit">%</span></div><div class="stat-lbl">Cobertura máxima do Estado</div></div>
+      <div class="stat-item"><div class="stat-val">24<span class="unit">h</span></div><div class="stat-lbl">Prazo de resposta ao orçamento</div></div>
+      <div class="stat-item"><div class="stat-val">100<span class="unit">%</span></div><div class="stat-lbl">Processos ANAH geridos end-to-end</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ZONE (ciblage 77+91) -->
+<div class="zone-band">
+  <div class="container">
+    <p class="zone-text">📍 Atuamos prioritariamente em Seine-et-Marne (77) e Essonne (91) — perto de Melun, Provins, Évry e Corbeil-Essonnes. A nossa equipa conhece bem estas zonas e os seus instaladores certificados.</p>
+  </div>
+</div>
+
+<!-- TÉMOIGNAGE -->
+<section class="section--sm" style="padding:56px 0;">
+  <div class="container">
+    <div class="testi-card">
+      <p class="testi-quote">"A nossa bomba de calor foi instalada em três semanas. Com as ajudas, pagámos apenas 3 200 €. A fatura de aquecimento baixou para metade já no primeiro inverno."</p>
+      <div class="testi-author">— Manuel R., Melun (77)</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIANCE -->
+<div class="confiance-band">
+  <div class="container">
+    <div class="confiance-grid">
+      <div class="confiance-item"><div>🎁 <strong>Orçamento 100% gratuito</strong> A PSG Energy é paga pelos parceiros instaladores, nunca por si.</div></div>
+      <div class="confiance-item"><div>⏰ <strong>Sem compromisso</strong> Direito de retratação de 14 dias garantido por lei.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- AIDES -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <div class="badge badge--blue" style="margin-bottom:14px;">💰 Subsídios ANAH 2026</div>
+      <h2 class="h2">Todos os subsídios acumulados para si</h2>
+      <p class="lead" style="max-width:560px;margin:12px auto 0;">PSG Energy identifica e acumula cada subsídio a que tem direito. Zero procedimentos administrativos da sua parte.</p>
+    </div>
+    <div class="aides-grid">
+      <div class="aide-card"><div class="aide-ico">🏛️</div><div class="aide-name">MaPrimeRénov (MPR)</div><div class="aide-amount" style="color:var(--blue);">até 30 000 €</div><div class="aide-desc">Subsídio ANAH segundo os seus rendimentos. Faixa T1: até 80% do custo s/ IVA via Percurso Acompanhado.</div><span class="aide-tag" style="background:var(--blueL);color:var(--blue);">Por obra ou Renovação de amplitude</span></div>
+      <div class="aide-card"><div class="aide-ico">🌱</div><div class="aide-name">Certificados CEE</div><div class="aide-amount" style="color:var(--green);">até 4 000 €</div><div class="aide-desc">Prémios pagos pelos fornecedores de energia (EDF, Engie…) em troca de poupanças de energia certificadas.</div><span class="aide-tag" style="background:var(--greenL);color:var(--greenD);">Acumulável com MPR</span></div>
+      <div class="aide-card"><div class="aide-ico">📉</div><div class="aide-name">IVA 5,5%</div><div class="aide-amount" style="color:var(--gold);">poupança 14,5%</div><div class="aide-desc">Taxa reduzida de IVA em todas as obras de renovação energética (vs 20% padrão). Poupança direta na fatura.</div><span class="aide-tag" style="background:var(--goldL);color:#A06B00;">Automático RGE</span></div>
+      <div class="aide-card"><div class="aide-ico">🏦</div><div class="aide-name">Éco-PTZ</div><div class="aide-amount" style="color:var(--blue);">até 50 000 €</div><div class="aide-desc">Empréstimo a taxa zero para financiar o remanescente. Sem adiantamento de tesouraria para famílias de baixos rendimentos.</div><span class="aide-tag" style="background:var(--blueL);color:var(--blue);">Taxa 0% · até 20 anos</span></div>
+      <div class="aide-card"><div class="aide-ico">🤝</div><div class="aide-name">Subsídio MAR</div><div class="aide-amount" style="color:var(--purple);">até 2 000 €</div><div class="aide-desc">Mon Accompagnateur Rénov' — ajuda para o acompanhamento do seu processo (T1 e T2: 100% coberto).</div><span class="aide-tag" style="background:#F3EEFF;color:var(--purple);">Percurso Acompanhado</span></div>
+      <div class="aide-card" style="background:linear-gradient(135deg,#08091A,#1A2050);border-color:transparent;"><div class="aide-ico">🏆</div><div class="aide-name" style="color:#fff;">Percurso Acompanhado</div><div class="aide-amount" style="color:#00C48C;">até 32 000 €</div><div class="aide-desc" style="color:rgba(255,255,255,.65);">O máximo legal: MPR + MAR + bónus passoire. PSG Energy acompanha-o de A a Z, sem adiantamento.</div><a href="/simulateur/" class="aide-tag" style="background:rgba(0,196,140,.2);color:#00C48C;display:inline-block;margin-top:12px;">Simular →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="section section--surf">
+  <div class="container">
+    <div class="section-title">
+      <div class="badge badge--green" style="margin-bottom:14px;">🚀 O nosso processo</div>
+      <h2 class="h2">Da simulação à instalação em 4 etapas</h2>
+    </div>
+    <div class="process-steps">
+      <div class="proc-step"><div class="proc-num">1</div><div class="proc-title">Simulação gratuita</div><div class="proc-desc">60 segundos para estimar todos os seus subsídios ANAH 2026 com base no seu perfil.</div></div>
+      <div class="proc-step"><div class="proc-num">2</div><div class="proc-title">Orçamento em 24h</div><div class="proc-desc">Um especialista PSG Energy contacta-o e prepara um orçamento personalizado assinável online.</div></div>
+      <div class="proc-step"><div class="proc-num">3</div><div class="proc-title">Processo ANAH</div><div class="proc-desc">Gerimos 100% do processo administrativo ANAH em seu nome. Zero burocracia.</div></div>
+      <div class="proc-step"><div class="proc-num">4</div><div class="proc-title">Instalação RGE</div><div class="proc-desc">Os nossos parceiros certificados instalam em 2 a 18 dias consoante o equipamento escolhido.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">
+      <div class="badge" style="margin-bottom:14px;">👩‍💼 Os nossos especialistas</div>
+      <h2 class="h2">Especialistas RGE ao seu serviço</h2>
+      <p class="lead" style="max-width:520px;margin:12px auto 0;">Cada projeto é acompanhado por um especialista dedicado, certificado e disponível 6 dias/semana.</p>
+    </div>
+    <div class="expert-cards" id="expert-cards"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--surf">
+  <div class="container container--sm">
+    <div class="section-title"><h2 class="h2">Perguntas frequentes</h2></div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="cta-band" id="contact">
+  <div class="container container--sm">
+    <h2 class="h2">O seu projeto merece atenção pessoal.</h2>
+    <p class="lead">Um especialista PSG Energy contacta-o em 24h para analisar a sua situação e calcular exatamente as suas ajudas.</p>
+    <form class="cta-form-inline" onsubmit="soumettreContact(event)">
+      <input class="cta-inp" type="text" id="c-nom" placeholder="O seu nome" required>
+      <input class="cta-inp" type="tel" id="c-tel" placeholder="O seu telefone" required inputmode="tel">
+      <button class="cta-submit" type="submit">Pedir retorno →</button>
+    </form>
+    <div class="cta-confirm" id="cta-confirm">✓ Pedido recebido — um especialista entrará em contacto em 24h!</div>
+    <p class="cta-mention">Ao submeter este formulário aceita ser contactado pela PSG Energy. Dados tratados conforme a nossa <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">política de privacidade</a>.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">PSG Energy</div>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;max-width:280px;margin-bottom:16px;">Agência comercial especializada em renovação energética. Venda de equipamentos via instaladores RGE certificados em Île-de-France.</p>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.4);">SASU PSG Energy · IDF &amp; Zona CEMAC</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Soluções</div>
+        <a href="/simulateur/" class="footer-link">Simulador ANAH</a>
+        <a href="/solutions/" class="footer-link">Bomba de calor</a>
+        <a href="/solutions/" class="footer-link">Isolamento</a>
+        <a href="/solutions/" class="footer-link">Painéis solares</a>
+        <a href="/afrique/" class="footer-link">África / CEMAC</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <a href="/mentions-legales.html" class="footer-link">Avisos legais</a>
+        <a href="/cgv.html" class="footer-link">CGV</a>
+        <a href="/politique-confidentialite.html" class="footer-link">Privacidade</a>
+        <a href="/partenaires/login.html" class="footer-link">Área de parceiros</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <a href="mailto:contact@psglobal.energy" class="footer-link">contact@psglobal.energy</a>
+        <a href="mailto:dpo@psglobal.energy" class="footer-link">dpo@psglobal.energy</a>
+        <div class="footer-link" style="cursor:default;">📍 Île-de-France</div>
+        <div class="footer-link" style="cursor:default;">📍 Congo Brazavile</div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 PSG Energy (Provider Services Groupe) — SASU · Todos os direitos reservados · <a href="/politique-confidentialite.html" class="footer-link" style="display:inline;">Conforme RGPD</a></div>
+  </div>
+</footer>
+
+<div id="elia-bubble">
+  <span class="elia-label">Élia · Especialista ANAH</span>
+  <button class="elia-btn" onclick="location.href='/psg-chatbot-elia.html'" aria-label="Abrir chatbot Élia">💬<span class="elia-dot"></span></button>
+</div>
+
+<script src="/shared/engine.js"></script>
+<script>
+const LEAD_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26430336/42adxpr/';
+
+const FAQ_PT = [
+  {q:'Quem pode beneficiar dos subsídios ANAH 2026?',a:'Qualquer proprietário ocupante ou senhorio de uma habitação com mais de 15 anos pode receber subsídios MaPrimeRénov. Famílias de rendimentos baixos e muito baixos (T1/T2) obtêm as taxas mais elevadas — até 80% do custo s/IVA no Percurso Acompanhado.'},
+  {q:'Quanto tempo demora o processo do início ao fim?',a:'Do primeiro contacto ao fim da instalação: conte 6 a 12 semanas. Orçamento em 24h, aprovação ANAH em 3 a 6 semanas, instalação em 2 a 18 dias. PSG Energy gere todos os passos administrativos.'},
+  {q:'Tenho de adiantar os fundos?',a:'Não. Para as famílias T1 (rendimento muito baixo), os subsídios MPR são pagos diretamente aos instaladores. Para as outras faixas, o Éco-PTZ a taxa 0% cobre o remanescente sem necessidade de adiantamento.'},
+  {q:'O que é o Percurso Acompanhado?',a:'O máximo legal de subsídios ANAH, ativado para uma Renovação de Amplitude (mínimo 2 intervenções incluindo pelo menos 1 de isolamento). PSG Energy coordena o seu processo MAR e acumula MPR Ampleur + subsídio MAR + bónus passoire, totalizando até 32 000 €.'},
+  {q:'A PSG Energy instala os equipamentos?',a:'Não. PSG Energy é uma agência comercial: calculamos os seus subsídios, gerimos o seu processo ANAH e coordenamos os nossos parceiros instaladores certificados RGE.'},
+  {q:'Os subsídios estão disponíveis em África / CEMAC?',a:'Os subsídios ANAH aplicam-se apenas a imóveis em França continental. PSG Energy opera também no Congo Brazavile e na zona CEMAC com ofertas adaptadas em energias renováveis.'}
+];
+
+function renderFAQ() {
+  document.getElementById('faq-list').innerHTML = FAQ_PT.map(function(f,i){
+    return '<div class="faq-item" id="faq-'+i+'"><button class="faq-q" onclick="toggleFAQ('+i+')">'+f.q+'<span class="faq-arrow">▼</span></button><div class="faq-a">'+f.a+'</div></div>';
+  }).join('');
+}
+function toggleFAQ(i) { document.getElementById('faq-'+i).classList.toggle('open'); }
+
+function renderExperts() {
+  const colors = ['#1A4DFF','#00C48C','#F5A000'];
+  document.getElementById('expert-cards').innerHTML = PSGEngine.experts.map(function(e,i){
+    return '<div class="expert-card"><div class="exp-av" style="background:'+colors[i]+'">'+e.photo_initiale+'</div><div class="exp-name">'+e.nom+'</div><div class="exp-titre">'+e.titre+'</div><div class="exp-note">★★★★★ '+e.note+'/5 · '+e.nb_dossiers+' processos</div><div class="exp-args">'+e.arguments.map(function(a){return '<div class="exp-arg">'+a+'</div>';}).join('')+'</div></div>';
+  }).join('');
+}
+
+function simulerRapide() {
+  const tranche = document.getElementById('h-tranche').value;
+  const geste = document.getElementById('h-geste').value;
+  if (!tranche || !geste) { alert('Por favor selecione ambos os campos.'); return; }
+  const r = PSGEngine.calculerRapide(tranche, geste);
+  if (!r) return;
+  document.getElementById('sr-total').textContent = r.total.toLocaleString('fr-FR') + ' €';
+  document.getElementById('sr-rows').innerHTML =
+    '<div class="sim-row"><span class="sim-row-label">MaPrimeRénov ('+tranche+')</span><span class="sim-row-val green">+'+r.mpr.toLocaleString('fr-FR')+' €</span></div>'+
+    '<div class="sim-row"><span class="sim-row-label">CEE</span><span class="sim-row-val green">+'+r.cee.toLocaleString('fr-FR')+' €</span></div>'+
+    '<div class="sim-row"><span class="sim-row-label">IVA 5,5%</span><span class="sim-row-val green">+'+r.tva.toLocaleString('fr-FR')+' €</span></div>'+
+    '<div class="sim-row" style="border-top:1px solid rgba(255,255,255,.15);padding-top:10px;"><span class="sim-row-label" style="font-weight:800;color:rgba(255,255,255,.9);">Remanescente</span><span class="sim-row-val" style="font-size:1.1rem;">'+r.rac.toLocaleString('fr-FR')+' €</span></div>'+
+    '<div class="sim-row"><span class="sim-row-label">Éco-PTZ</span><span class="sim-row-val">até 50 000 €</span></div>';
+  document.getElementById('sim-result').style.display = 'block';
+}
+
+function soumettreContact(e) {
+  e.preventDefault();
+  const nom = document.getElementById('c-nom').value.trim();
+  const tel = document.getElementById('c-tel').value.trim();
+  if (LEAD_WEBHOOK) {
+    fetch(LEAD_WEBHOOK, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({nom,tel,source:'landing_pt',lang:'pt',date:new Date().toISOString()}) }).catch(function(){});
+  }
+  document.querySelector('.cta-form-inline').style.display = 'none';
+  document.getElementById('cta-confirm').style.display = 'block';
+}
+
+renderExperts();
+renderFAQ();
+</script>
+</body>
+</html>

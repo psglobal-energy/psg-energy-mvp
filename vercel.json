@@ -1,6 +1,9 @@
 {
   "rewrites": [
     { "source": "/simulateur", "destination": "/simulateur/index.html" },
-    { "source": "/admin",      "destination": "/admin/dashboard.html" }
+    { "source": "/admin",      "destination": "/admin/dashboard.html" },
+    { "source": "/en",         "destination": "/en/index.html" },
+    { "source": "/ar",         "destination": "/ar/index.html" },
+    { "source": "/pt",         "destination": "/pt/index.html" }
   ]
 }

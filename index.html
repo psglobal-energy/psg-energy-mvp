@@ -5,7 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PSG Energy — L'État paie jusqu'à 71% de vos travaux | Rénovation énergétique IDF</title>
 <meta name="description" content="Calculez vos aides ANAH 2026 en 60 secondes. MaPrimeRénov, CEE, Éco-PTZ, MAR. Experts RGE certifiés en Île-de-France. Devis gratuit sous 24h.">
-<link rel="canonical" href="https://psglobal.energy/">
+<link rel="canonical" href="https://psg-energy.fr/">
+<link rel="alternate" hreflang="fr" href="https://psg-energy.fr/">
+<link rel="alternate" hreflang="en" href="https://psg-energy.fr/en/">
+<link rel="alternate" hreflang="ar" href="https://psg-energy.fr/ar/">
+<link rel="alternate" hreflang="pt" href="https://psg-energy.fr/pt/">
+<link rel="alternate" hreflang="x-default" href="https://psg-energy.fr/">
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="shared/design-system.css">
 <style>
@@ -21,8 +26,14 @@
   padding:4px 10px; border-radius:100px; font-size:.78rem; font-weight:700;
   border:1.5px solid rgba(255,255,255,.15); color:rgba(255,255,255,.55);
   cursor:pointer; background:none; font-family:var(--ff); transition:all .18s;
+  text-decoration:none; display:inline-block;
 }
 .lp:hover, .lp.active { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.35); color:#fff; }
+
+/* LANG SWITCHER NAV */
+.lang-switcher { display:flex; gap:6px; align-items:center; }
+.lang-switcher a { font-size:.78rem; font-weight:700; color:var(--ink3); padding:3px 8px; border-radius:6px; transition:all .15s; }
+.lang-switcher a:hover, .lang-switcher a.active { color:var(--blue); background:var(--blueL); }
 
 /* HERO */
 .hero {
@@ -281,10 +292,10 @@
 <!-- LANG BAR -->
 <div class="lang-bar">
   <span class="lang-bar-txt" id="langBarTxt">🌍 Découvrez vos aides dans votre langue</span>
-  <button class="lp active" onclick="setLang('fr')">🇫🇷 FR</button>
-  <button class="lp" onclick="setLang('en')">🇬🇧 EN</button>
-  <button class="lp" onclick="setLang('ar')">🇸🇦 AR</button>
-  <button class="lp" onclick="setLang('pt')">🇧🇷 PT</button>
+  <a class="lp active" href="/">🇫🇷 FR</a>
+  <a class="lp" href="/en/">🇬🇧 EN</a>
+  <a class="lp" href="/ar/">🇸🇦 AR</a>
+  <a class="lp" href="/pt/">🇧🇷 PT</a>
   <button class="lp" onclick="setLang('tr')">🇹🇷 TR</button>
   <button class="lp" onclick="setLang('zh')">🇨🇳 ZH</button>
 </div>
@@ -292,6 +303,12 @@
 <!-- NAV -->
 <nav class="nav">
   <a href="/" class="nav-logo">PSG<span>Energy</span></a>
+  <nav class="lang-switcher">
+    <a href="/" class="active">FR</a>
+    <a href="/en/">EN</a>
+    <a href="/ar/">AR</a>
+    <a href="/pt/">PT</a>
+  </nav>
   <div class="nav-links">
     <a href="/simulateur/" class="nav-link" data-i18n="nav_sim">Simulateur</a>
     <a href="/solutions/" class="nav-link" data-i18n="nav_sol">Solutions</a>
