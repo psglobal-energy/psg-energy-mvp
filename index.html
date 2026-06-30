@@ -11,6 +11,19 @@
 <style>
 /* ── PAGE SPÉCIFIQUE ── */
 
+/* LANG BAR */
+.lang-bar {
+  background:var(--ink); border-bottom:1px solid rgba(255,255,255,.08);
+  padding:8px 24px; display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.lang-bar-txt { font-size:.8rem; color:rgba(255,255,255,.5); font-family:var(--fb); margin-right:4px; }
+.lp {
+  padding:4px 10px; border-radius:100px; font-size:.78rem; font-weight:700;
+  border:1.5px solid rgba(255,255,255,.15); color:rgba(255,255,255,.55);
+  cursor:pointer; background:none; font-family:var(--ff); transition:all .18s;
+}
+.lp:hover, .lp.active { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.35); color:#fff; }
+
 /* HERO */
 .hero {
   background:linear-gradient(135deg, #08091A 0%, #1A2050 60%, #0D2A80 100%);
@@ -37,7 +50,6 @@
 .hero-badge--b { background:rgba(26,77,255,.15);  border-color:rgba(26,77,255,.4);  color:#7CA3FF; }
 .hero-h1 { font-size:clamp(2.2rem,4.5vw,3.4rem); font-weight:900; line-height:1.08; letter-spacing:-.025em; color:#fff; margin-bottom:20px; }
 .hero-h1 .accent { color:#00C48C; }
-.hero-h1 .accent-gold { color:#F5A000; }
 .hero-sub { font-size:1.1rem; color:rgba(255,255,255,.7); font-family:var(--fb); line-height:1.6; margin-bottom:32px; max-width:480px; }
 .hero-cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px; }
 .hero-social { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
@@ -255,6 +267,7 @@
 }
 @media(max-width:600px) {
   .hero { padding:56px 0 48px; }
+  .lang-bar { flex-wrap:wrap; }
   .aides-grid { grid-template-columns:1fr; }
   .stats-grid { grid-template-columns:1fr 1fr; }
   .process-steps { grid-template-columns:1fr; }
@@ -265,16 +278,27 @@
 </head>
 <body>
 
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-bar-txt" id="langBarTxt">🌍 Découvrez vos aides dans votre langue</span>
+  <button class="lp active" onclick="setLang('fr')">🇫🇷 FR</button>
+  <button class="lp" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lp" onclick="setLang('ar')">🇸🇦 AR</button>
+  <button class="lp" onclick="setLang('pt')">🇧🇷 PT</button>
+  <button class="lp" onclick="setLang('tr')">🇹🇷 TR</button>
+  <button class="lp" onclick="setLang('zh')">🇨🇳 ZH</button>
+</div>
+
 <!-- NAV -->
 <nav class="nav">
   <a href="/" class="nav-logo">PSG<span>Energy</span></a>
   <div class="nav-links">
-    <a href="/simulateur/" class="nav-link">Simulateur</a>
-    <a href="/solutions/" class="nav-link">Solutions</a>
-    <a href="/partenaires/login.html" class="nav-link">Partenaires</a>
-    <a href="/afrique/" class="nav-link">Afrique</a>
+    <a href="/simulateur/" class="nav-link" data-i18n="nav_sim">Simulateur</a>
+    <a href="/solutions/" class="nav-link" data-i18n="nav_sol">Solutions</a>
+    <a href="/partenaires/login.html" class="nav-link" data-i18n="nav_pro">Partenaires</a>
+    <a href="/afrique/" class="nav-link" data-i18n="nav_afr">Afrique</a>
   </div>
-  <a href="#contact" class="btn btn--primary btn--sm">Devis gratuit →</a>
+  <a href="#contact" class="btn btn--primary btn--sm" data-i18n="nav_cta">Devis gratuit →</a>
 </nav>
 
 <!-- HERO -->
@@ -284,27 +308,24 @@
       <!-- GAUCHE -->
       <div>
         <div class="hero-badge-row">
-          <span class="hero-badge hero-badge--g">✓ ANAH 2026 Officiel</span>
-          <span class="hero-badge hero-badge--b">⚡ Réponse sous 24h</span>
-          <span class="hero-badge hero-badge--g">🏆 Experts RGE Certifiés</span>
+          <span class="hero-badge hero-badge--g" data-i18n="badge1">✓ ANAH 2026 Officiel</span>
+          <span class="hero-badge hero-badge--b" data-i18n="badge2">⚡ Réponse sous 24h</span>
+          <span class="hero-badge hero-badge--g" data-i18n="badge3">🏆 Experts RGE Certifiés</span>
         </div>
-        <h1 class="hero-h1">
-          L'État paie<br>
-          jusqu'à <span class="accent">71%</span><br>
-          de vos travaux
+        <h1 class="hero-h1" data-i18n="hero_h1">
+          L'État paie<br>jusqu'à <span class="accent">71%</span><br>de vos travaux
         </h1>
-        <p class="hero-sub">
-          MaPrimeRénov, CEE, TVA 5,5%, Éco-PTZ, MAR — PSG Energy cumule toutes vos aides 2026
-          et vous accompagne gratuitement en Île-de-France.
+        <p class="hero-sub" data-i18n="hero_sub">
+          MaPrimeRénov, CEE, TVA 5,5%, Éco-PTZ, MAR — PSG Energy cumule toutes vos aides 2026 et vous accompagne gratuitement en Île-de-France.
         </p>
         <div class="hero-cta-row">
-          <a href="/simulateur/" class="btn btn--green btn--lg">Calculer mes aides →</a>
-          <a href="#contact" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,.3);color:#fff;">Devis gratuit</a>
+          <a href="/simulateur/" class="btn btn--green btn--lg" data-i18n="hero_cta1">Calculer mes aides →</a>
+          <a href="#contact" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,.3);color:#fff;" data-i18n="hero_cta2">Devis gratuit</a>
         </div>
         <div class="hero-social">
           <div class="hero-social-item">
             <span class="hero-stars">★★★★★</span>
-            <span><strong>4,9/5</strong> · 127 avis clients</span>
+            <span><strong>4,9/5</strong> · <span data-i18n="trust3_lbl">127 avis clients</span></span>
           </div>
           <div class="hero-social-item">🏅 <strong>RGE</strong> QualiPAC · Qualibat</div>
           <div class="hero-social-item">📍 <strong>IDF</strong> 77 · 94 · 91 · 93</div>
@@ -313,47 +334,47 @@
 
       <!-- DROITE : SIMULATEUR RAPIDE -->
       <div class="sim-box">
-        <div class="sim-title">⚡ Calculez vos aides en <span>60 secondes</span></div>
+        <div class="sim-title" data-i18n="sim_box_title">⚡ Calculez vos aides en <span>60 secondes</span></div>
 
         <div class="sim-field">
-          <label class="sim-label">Votre situation fiscale</label>
+          <label class="sim-label" data-i18n="sim_lbl_tranche">Votre situation fiscale</label>
           <select class="sim-select" id="h-tranche">
-            <option value="">— Sélectionnez —</option>
-            <option value="T1">Très modeste (revenus &lt; 21 805 €/an)</option>
-            <option value="T2">Modeste (revenus &lt; 26 939 €/an)</option>
-            <option value="T3">Intermédiaire (revenus &lt; 40 018 €/an)</option>
-            <option value="T4">Supérieur (au-dessus)</option>
+            <option value="" data-i18n="sim_sel">— Sélectionnez —</option>
+            <option value="T1" data-i18n="sim_t1">Très modeste (revenus &lt; 21 805 €/an)</option>
+            <option value="T2" data-i18n="sim_t2">Modeste (revenus &lt; 26 939 €/an)</option>
+            <option value="T3" data-i18n="sim_t3">Intermédiaire (revenus &lt; 40 018 €/an)</option>
+            <option value="T4" data-i18n="sim_t4">Supérieur (au-dessus)</option>
           </select>
         </div>
 
         <div class="sim-field">
-          <label class="sim-label">Travaux envisagés</label>
+          <label class="sim-label" data-i18n="sim_lbl_geste">Travaux envisagés</label>
           <select class="sim-select" id="h-geste">
-            <option value="">— Sélectionnez —</option>
-            <option value="pac_air_eau">♨️ Pompe à chaleur Air/Eau</option>
-            <option value="iso_combles">🧱 Isolation combles</option>
-            <option value="iso_murs_ext">🏠 Isolation murs extérieur</option>
-            <option value="menuiseries">🪟 Fenêtres / Portes-fenêtres</option>
+            <option value="" data-i18n="sim_sel">— Sélectionnez —</option>
+            <option value="pac_air_eau">♨️ <span data-i18n="g_pac">Pompe à chaleur Air/Eau</span></option>
+            <option value="iso_combles">🧱 <span data-i18n="g_iso_c">Isolation combles</span></option>
+            <option value="iso_murs_ext">🏠 <span data-i18n="g_iso_m">Isolation murs extérieur</span></option>
+            <option value="menuiseries">🪟 <span data-i18n="g_men">Fenêtres / Portes-fenêtres</span></option>
             <option value="vmc">💨 VMC Double Flux</option>
-            <option value="cet">💧 Chauffe-eau Thermodynamique</option>
-            <option value="pv">☀️ Panneaux solaires</option>
+            <option value="cet">💧 <span data-i18n="g_cet">Chauffe-eau Thermodynamique</span></option>
+            <option value="pv">☀️ <span data-i18n="g_pv">Panneaux solaires</span></option>
           </select>
         </div>
 
         <div class="sim-field">
-          <label class="sim-label">Code postal</label>
+          <label class="sim-label" data-i18n="sim_lbl_cp">Code postal</label>
           <input class="sim-input" type="text" id="h-cp" placeholder="ex : 77100" maxlength="5" inputmode="numeric">
         </div>
 
-        <button class="sim-btn" onclick="simulerRapide()">
+        <button class="sim-btn" onclick="simulerRapide()" data-i18n="sim_btn">
           Calculer mes aides →
         </button>
 
         <div class="sim-result" id="sim-result">
           <div class="sim-result-amount" id="sr-total">0 €</div>
-          <div class="sim-result-label">d'aides estimées pour votre projet</div>
+          <div class="sim-result-label" data-i18n="sim_res_lbl">d'aides estimées pour votre projet</div>
           <div class="sim-result-rows" id="sr-rows"></div>
-          <button class="sim-cta2" onclick="location.href='/simulateur/'">
+          <button class="sim-cta2" onclick="location.href='/simulateur/'" data-i18n="sim_cta2">
             Simulation complète + Devis gratuit →
           </button>
         </div>
@@ -367,20 +388,20 @@
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item">
-        <div class="stat-val"><span class="unit">jusqu'à </span>32k<span class="unit">€</span></div>
-        <div class="stat-lbl">Aides cumulées ANAH 2026</div>
+        <div class="stat-val"><span class="unit" data-i18n="stat1_pre">jusqu'à </span>32k<span class="unit">€</span></div>
+        <div class="stat-lbl" data-i18n="stat1_lbl">Aides cumulées ANAH 2026</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">71<span class="unit">%</span></div>
-        <div class="stat-lbl">Prise en charge maximum État</div>
+        <div class="stat-lbl" data-i18n="stat2_lbl">Prise en charge maximum État</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">24<span class="unit">h</span></div>
-        <div class="stat-lbl">Délai réponse devis</div>
+        <div class="stat-lbl" data-i18n="stat3_lbl">Délai réponse devis</div>
       </div>
       <div class="stat-item">
         <div class="stat-val">100<span class="unit">%</span></div>
-        <div class="stat-lbl">Dossiers ANAH pris en charge</div>
+        <div class="stat-lbl" data-i18n="stat4_lbl">Dossiers ANAH pris en charge</div>
       </div>
     </div>
   </div>
@@ -390,52 +411,52 @@
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <div class="badge badge--blue" style="margin-bottom:14px;">💰 Aides ANAH 2026</div>
-      <h2 class="h2">Toutes les aides cumulées pour vous</h2>
-      <p class="lead" style="max-width:560px;margin:12px auto 0;">PSG Energy identifie et cumule chaque aide à laquelle vous avez droit. Zéro démarche administrative de votre côté.</p>
+      <div class="badge badge--blue" style="margin-bottom:14px;" data-i18n="aides_badge">💰 Aides ANAH 2026</div>
+      <h2 class="h2" data-i18n="aides_title">Toutes les aides cumulées pour vous</h2>
+      <p class="lead" style="max-width:560px;margin:12px auto 0;" data-i18n="aides_sub">PSG Energy identifie et cumule chaque aide à laquelle vous avez droit. Zéro démarche administrative de votre côté.</p>
     </div>
     <div class="aides-grid">
       <div class="aide-card">
         <div class="aide-ico">🏛️</div>
-        <div class="aide-name">MaPrimeRénov (MPR)</div>
-        <div class="aide-amount" style="color:var(--blue);">jusqu'à 30 000 €</div>
-        <div class="aide-desc">Subvention ANAH selon vos revenus. Tranche T1 : jusqu'à 80% du coût HT via Parcours Accompagné.</div>
-        <span class="aide-tag" style="background:var(--blueL);color:var(--blue);">Par geste ou Rénovation d'ampleur</span>
+        <div class="aide-name" data-i18n="a1_name">MaPrimeRénov (MPR)</div>
+        <div class="aide-amount" style="color:var(--blue);" data-i18n="a1_amt">jusqu'à 30 000 €</div>
+        <div class="aide-desc" data-i18n="a1_desc">Subvention ANAH selon vos revenus. Tranche T1 : jusqu'à 80% du coût HT via Parcours Accompagné.</div>
+        <span class="aide-tag" style="background:var(--blueL);color:var(--blue);" data-i18n="a1_tag">Par geste ou Rénovation d'ampleur</span>
       </div>
       <div class="aide-card">
         <div class="aide-ico">🌱</div>
-        <div class="aide-name">Certificats CEE</div>
-        <div class="aide-amount" style="color:var(--green);">jusqu'à 4 000 €</div>
-        <div class="aide-desc">Primes versées par les fournisseurs d'énergie (EDF, Engie…) en échange d'économies d'énergie certifiées.</div>
-        <span class="aide-tag" style="background:var(--greenL);color:var(--greenD);">Cumulable avec MPR</span>
+        <div class="aide-name" data-i18n="a2_name">Certificats CEE</div>
+        <div class="aide-amount" style="color:var(--green);" data-i18n="a2_amt">jusqu'à 4 000 €</div>
+        <div class="aide-desc" data-i18n="a2_desc">Primes versées par les fournisseurs d'énergie (EDF, Engie…) en échange d'économies d'énergie certifiées.</div>
+        <span class="aide-tag" style="background:var(--greenL);color:var(--greenD);" data-i18n="a2_tag">Cumulable avec MPR</span>
       </div>
       <div class="aide-card">
         <div class="aide-ico">📉</div>
-        <div class="aide-name">TVA 5,5%</div>
-        <div class="aide-amount" style="color:var(--gold);">économie 14,5%</div>
-        <div class="aide-desc">Taux réduit de TVA sur tous les travaux de rénovation énergétique (vs 20% standard). Économie directe sur facture.</div>
-        <span class="aide-tag" style="background:var(--goldL);color:#A06B00;">Automatique RGE</span>
+        <div class="aide-name" data-i18n="a3_name">TVA 5,5%</div>
+        <div class="aide-amount" style="color:var(--gold);" data-i18n="a3_amt">économie 14,5%</div>
+        <div class="aide-desc" data-i18n="a3_desc">Taux réduit de TVA sur tous les travaux de rénovation énergétique (vs 20% standard). Économie directe sur facture.</div>
+        <span class="aide-tag" style="background:var(--goldL);color:#A06B00;" data-i18n="a3_tag">Automatique RGE</span>
       </div>
       <div class="aide-card">
         <div class="aide-ico">🏦</div>
-        <div class="aide-name">Éco-PTZ</div>
-        <div class="aide-amount" style="color:var(--blue);">jusqu'à 50 000 €</div>
-        <div class="aide-desc">Prêt à taux zéro pour financer le reste à charge. Aucune avance de trésorerie pour les ménages modestes.</div>
-        <span class="aide-tag" style="background:var(--blueL);color:var(--blue);">Taux 0% · 20 ans max</span>
+        <div class="aide-name" data-i18n="a4_name">Éco-PTZ</div>
+        <div class="aide-amount" style="color:var(--blue);" data-i18n="a4_amt">jusqu'à 50 000 €</div>
+        <div class="aide-desc" data-i18n="a4_desc">Prêt à taux zéro pour financer le reste à charge. Aucune avance de trésorerie pour les ménages modestes.</div>
+        <span class="aide-tag" style="background:var(--blueL);color:var(--blue);" data-i18n="a4_tag">Taux 0% · 20 ans max</span>
       </div>
       <div class="aide-card">
         <div class="aide-ico">🤝</div>
-        <div class="aide-name">Prime MAR</div>
-        <div class="aide-amount" style="color:var(--purple);">jusqu'à 2 000 €</div>
-        <div class="aide-desc">Mon Accompagnateur Rénov' — aide pour le pilotage de votre dossier en Parcours Accompagné (T1 et T2 : prise en charge 100%).</div>
-        <span class="aide-tag" style="background:#F3EEFF;color:var(--purple);">Parcours Accompagné</span>
+        <div class="aide-name" data-i18n="a5_name">Prime MAR</div>
+        <div class="aide-amount" style="color:var(--purple);" data-i18n="a5_amt">jusqu'à 2 000 €</div>
+        <div class="aide-desc" data-i18n="a5_desc">Mon Accompagnateur Rénov' — aide pour le pilotage de votre dossier en Parcours Accompagné (T1 et T2 : prise en charge 100%).</div>
+        <span class="aide-tag" style="background:#F3EEFF;color:var(--purple);" data-i18n="a5_tag">Parcours Accompagné</span>
       </div>
       <div class="aide-card" style="background:linear-gradient(135deg,#08091A,#1A2050);border-color:transparent;">
         <div class="aide-ico">🏆</div>
-        <div class="aide-name" style="color:#fff;">Parcours Accompagné</div>
-        <div class="aide-amount" style="color:#00C48C;">jusqu'à 32 000 €</div>
-        <div class="aide-desc" style="color:rgba(255,255,255,.65);">Le maximum légal : MPR + MAR + bonus passoire. PSG Energy vous accompagne de A à Z, sans avance.</div>
-        <a href="/simulateur/" class="aide-tag" style="background:rgba(0,196,140,.2);color:#00C48C;display:inline-block;margin-top:12px;">Simuler →</a>
+        <div class="aide-name" style="color:#fff;" data-i18n="a6_name">Parcours Accompagné</div>
+        <div class="aide-amount" style="color:#00C48C;" data-i18n="a6_amt">jusqu'à 32 000 €</div>
+        <div class="aide-desc" style="color:rgba(255,255,255,.65);" data-i18n="a6_desc">Le maximum légal : MPR + MAR + bonus passoire. PSG Energy vous accompagne de A à Z, sans avance.</div>
+        <a href="/simulateur/" class="aide-tag" style="background:rgba(0,196,140,.2);color:#00C48C;display:inline-block;margin-top:12px;" data-i18n="a6_cta">Simuler →</a>
       </div>
     </div>
   </div>
@@ -445,29 +466,29 @@
 <section class="section section--surf">
   <div class="container">
     <div class="section-title">
-      <div class="badge badge--green" style="margin-bottom:14px;">🚀 Notre processus</div>
-      <h2 class="h2">De la simulation à l'installation en 4 étapes</h2>
+      <div class="badge badge--green" style="margin-bottom:14px;" data-i18n="proc_badge">🚀 Notre processus</div>
+      <h2 class="h2" data-i18n="proc_title">De la simulation à l'installation en 4 étapes</h2>
     </div>
     <div class="process-steps">
       <div class="proc-step">
         <div class="proc-num">1</div>
-        <div class="proc-title">Simulation gratuite</div>
-        <div class="proc-desc">60 secondes pour estimer toutes vos aides ANAH 2026 selon votre profil.</div>
+        <div class="proc-title" data-i18n="p1_title">Simulation gratuite</div>
+        <div class="proc-desc" data-i18n="p1_desc">60 secondes pour estimer toutes vos aides ANAH 2026 selon votre profil.</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">2</div>
-        <div class="proc-title">Devis sous 24h</div>
-        <div class="proc-desc">Un expert PSG Energy vous contacte et prépare un devis personnalisé signable en ligne.</div>
+        <div class="proc-title" data-i18n="p2_title">Devis sous 24h</div>
+        <div class="proc-desc" data-i18n="p2_desc">Un expert PSG Energy vous contacte et prépare un devis personnalisé signable en ligne.</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">3</div>
-        <div class="proc-title">Dossier ANAH</div>
-        <div class="proc-desc">Nous gérons 100% du dossier administratif ANAH en votre nom. Zéro paperasse.</div>
+        <div class="proc-title" data-i18n="p3_title">Dossier ANAH</div>
+        <div class="proc-desc" data-i18n="p3_desc">Nous gérons 100% du dossier administratif ANAH en votre nom. Zéro paperasse.</div>
       </div>
       <div class="proc-step">
         <div class="proc-num">4</div>
-        <div class="proc-title">Installation RGE</div>
-        <div class="proc-desc">Nos partenaires certifiés installent en 2 à 18 jours selon l'équipement choisi.</div>
+        <div class="proc-title" data-i18n="p4_title">Installation RGE</div>
+        <div class="proc-desc" data-i18n="p4_desc">Nos partenaires certifiés installent en 2 à 18 jours selon l'équipement choisi.</div>
       </div>
     </div>
   </div>
@@ -477,9 +498,9 @@
 <section class="section">
   <div class="container">
     <div class="section-title">
-      <div class="badge" style="margin-bottom:14px;">👩‍💼 Nos experts</div>
-      <h2 class="h2">Des spécialistes RGE à votre service</h2>
-      <p class="lead" style="max-width:520px;margin:12px auto 0;">Chaque projet est suivi par un expert dédié, certifié et disponible 6j/7.</p>
+      <div class="badge" style="margin-bottom:14px;">👩‍💼 <span data-i18n="exp_badge">Nos experts</span></div>
+      <h2 class="h2" data-i18n="exp_title">Des spécialistes RGE à votre service</h2>
+      <p class="lead" style="max-width:520px;margin:12px auto 0;" data-i18n="exp_sub">Chaque projet est suivi par un expert dédié, certifié et disponible 6j/7.</p>
     </div>
     <div class="expert-cards" id="expert-cards"></div>
   </div>
@@ -489,7 +510,7 @@
 <section class="section section--surf">
   <div class="container container--sm">
     <div class="section-title">
-      <h2 class="h2">Questions fréquentes</h2>
+      <h2 class="h2" data-i18n="faq_title">Questions fréquentes</h2>
     </div>
     <div class="faq-list" id="faq-list"></div>
   </div>
@@ -498,15 +519,15 @@
 <!-- CONTACT CTA -->
 <section class="cta-band" id="contact">
   <div class="container container--sm">
-    <h2 class="h2">Prêt à réduire votre facture énergie ?</h2>
-    <p class="lead">Laissez-nous votre numéro — un expert PSG Energy vous rappelle sous 24h, sans engagement.</p>
+    <h2 class="h2" data-i18n="cta_title">Prêt à réduire votre facture énergie ?</h2>
+    <p class="lead" data-i18n="cta_sub">Laissez-nous votre numéro — un expert PSG Energy vous rappelle sous 24h, sans engagement.</p>
     <form class="cta-form-inline" onsubmit="soumettreContact(event)">
-      <input class="cta-inp" type="text" id="c-nom" placeholder="Votre prénom" required>
-      <input class="cta-inp" type="tel" id="c-tel" placeholder="Votre téléphone" required inputmode="tel">
-      <button class="cta-submit" type="submit">Être rappelé →</button>
+      <input class="cta-inp" type="text" id="c-nom" data-i18n-placeholder="cta_ph_nom" placeholder="Votre prénom" required>
+      <input class="cta-inp" type="tel" id="c-tel" data-i18n-placeholder="cta_ph_tel" placeholder="Votre téléphone" required inputmode="tel">
+      <button class="cta-submit" type="submit" data-i18n="cta_btn">Être rappelé →</button>
     </form>
-    <div class="cta-confirm" id="cta-confirm">✓ Demande reçue — un expert vous contacte sous 24h !</div>
-    <p class="cta-mention">
+    <div class="cta-confirm" id="cta-confirm" data-i18n="cta_confirm">✓ Demande reçue — un expert vous contacte sous 24h !</div>
+    <p class="cta-mention" data-i18n="cta_mention">
       En soumettant ce formulaire, vous acceptez d'être contacté par PSG Energy concernant votre projet de rénovation.
       Données traitées selon notre <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">politique de confidentialité</a>.
       Pas de démarchage abusif — désabonnement en 1 clic.
@@ -520,28 +541,28 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">PSG Energy</div>
-        <p style="font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;max-width:280px;margin-bottom:16px;">
+        <p style="font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6;max-width:280px;margin-bottom:16px;" data-i18n="footer_about">
           Régie commerciale spécialisée en rénovation énergétique. Vente d'équipements via installateurs RGE certifiés en Île-de-France.
         </p>
         <div style="font-size:.8rem;color:rgba(255,255,255,.4);">SASU PSG Energy · IDF &amp; Zone CEMAC</div>
       </div>
       <div>
-        <div class="footer-col-title">Solutions</div>
-        <a href="/simulateur/" class="footer-link">Simulateur ANAH</a>
-        <a href="/solutions/" class="footer-link">Pompe à chaleur</a>
-        <a href="/solutions/" class="footer-link">Isolation</a>
-        <a href="/solutions/" class="footer-link">Panneaux solaires</a>
-        <a href="/afrique/" class="footer-link">Afrique / CEMAC</a>
+        <div class="footer-col-title" data-i18n="footer_sol">Solutions</div>
+        <a href="/simulateur/" class="footer-link" data-i18n="footer_sim">Simulateur ANAH</a>
+        <a href="/solutions/" class="footer-link" data-i18n="footer_pac">Pompe à chaleur</a>
+        <a href="/solutions/" class="footer-link" data-i18n="footer_iso">Isolation</a>
+        <a href="/solutions/" class="footer-link" data-i18n="footer_pv">Panneaux solaires</a>
+        <a href="/afrique/" class="footer-link" data-i18n="footer_afr">Afrique / CEMAC</a>
       </div>
       <div>
-        <div class="footer-col-title">Entreprise</div>
-        <a href="/mentions-legales.html" class="footer-link">Mentions légales</a>
+        <div class="footer-col-title" data-i18n="footer_cie">Entreprise</div>
+        <a href="/mentions-legales.html" class="footer-link" data-i18n="footer_ml">Mentions légales</a>
         <a href="/cgv.html" class="footer-link">CGV</a>
-        <a href="/politique-confidentialite.html" class="footer-link">Confidentialité</a>
-        <a href="/partenaires/login.html" class="footer-link">Espace partenaires</a>
+        <a href="/politique-confidentialite.html" class="footer-link" data-i18n="footer_pc">Confidentialité</a>
+        <a href="/partenaires/login.html" class="footer-link" data-i18n="footer_par">Espace partenaires</a>
       </div>
       <div>
-        <div class="footer-col-title">Contact</div>
+        <div class="footer-col-title" data-i18n="footer_contact">Contact</div>
         <a href="mailto:contact@psglobal.energy" class="footer-link">contact@psglobal.energy</a>
         <a href="mailto:dpo@psglobal.energy" class="footer-link">dpo@psglobal.energy</a>
         <div class="footer-link" style="cursor:default;">📍 Île-de-France</div>
@@ -549,15 +570,15 @@
       </div>
     </div>
     <div class="footer-bottom">
-      © 2026 PSG Energy (Provider Services Groupe) — SASU · Tous droits réservés ·
-      <a href="/politique-confidentialite.html" class="footer-link" style="display:inline;">RGPD conforme</a>
+      © 2026 PSG Energy (Provider Services Groupe) — SASU · <span data-i18n="footer_rights">Tous droits réservés</span> ·
+      <a href="/politique-confidentialite.html" class="footer-link" style="display:inline;" data-i18n="footer_rgpd">RGPD conforme</a>
     </div>
   </div>
 </footer>
 
 <!-- WIDGET ÉLIA -->
 <div id="elia-bubble">
-  <span class="elia-label">Élia · Experte ANAH</span>
+  <span class="elia-label" data-i18n="elia_label">Élia · Experte ANAH</span>
   <button class="elia-btn" onclick="location.href='/psg-chatbot-elia.html'" aria-label="Ouvrir le chatbot Élia">
     💬
     <span class="elia-dot"></span>
@@ -569,13 +590,366 @@
 /* ── CONFIG ──────────────────────────────────────────────────── */
 const LEAD_WEBHOOK = 'https://hooks.zapier.com/hooks/catch/26430336/42adxpr/';
 
+/* ── TRADUCTIONS i18n ──────────────────────────────────────── */
+const LANGS = {
+fr: {
+  langBarTxt:'🌍 Découvrez vos aides dans votre langue',
+  nav_sim:'Simulateur', nav_sol:'Solutions', nav_pro:'Partenaires', nav_afr:'Afrique', nav_cta:'Devis gratuit →',
+  badge1:'✓ ANAH 2026 Officiel', badge2:'⚡ Réponse sous 24h', badge3:'🏆 Experts RGE Certifiés',
+  hero_h1:'L\'État paie<br>jusqu\'à <span class="accent">71%</span><br>de vos travaux',
+  hero_sub:'MaPrimeRénov, CEE, TVA 5,5%, Éco-PTZ, MAR — PSG Energy cumule toutes vos aides 2026 et vous accompagne gratuitement en Île-de-France.',
+  hero_cta1:'Calculer mes aides →', hero_cta2:'Devis gratuit', trust3_lbl:'127 avis clients',
+  sim_box_title:'⚡ Calculez vos aides en <span>60 secondes</span>',
+  sim_lbl_tranche:'Votre situation fiscale', sim_lbl_geste:'Travaux envisagés', sim_lbl_cp:'Code postal',
+  sim_sel:'— Sélectionnez —',
+  sim_t1:'Très modeste (revenus < 21 805 €/an)', sim_t2:'Modeste (revenus < 26 939 €/an)',
+  sim_t3:'Intermédiaire (revenus < 40 018 €/an)', sim_t4:'Supérieur (au-dessus)',
+  g_pac:'Pompe à chaleur Air/Eau', g_iso_c:'Isolation combles', g_iso_m:'Isolation murs extérieur',
+  g_men:'Fenêtres / Portes-fenêtres', g_cet:'Chauffe-eau Thermodynamique', g_pv:'Panneaux solaires',
+  sim_btn:'Calculer mes aides →', sim_res_lbl:'d\'aides estimées pour votre projet',
+  sim_cta2:'Simulation complète + Devis gratuit →',
+  stat1_pre:'jusqu\'à ', stat1_lbl:'Aides cumulées ANAH 2026', stat2_lbl:'Prise en charge maximum État',
+  stat3_lbl:'Délai réponse devis', stat4_lbl:'Dossiers ANAH pris en charge',
+  aides_badge:'💰 Aides ANAH 2026', aides_title:'Toutes les aides cumulées pour vous',
+  aides_sub:'PSG Energy identifie et cumule chaque aide à laquelle vous avez droit. Zéro démarche administrative de votre côté.',
+  a1_name:'MaPrimeRénov (MPR)', a1_amt:'jusqu\'à 30 000 €', a1_desc:'Subvention ANAH selon vos revenus. Tranche T1 : jusqu\'à 80% du coût HT via Parcours Accompagné.', a1_tag:'Par geste ou Rénovation d\'ampleur',
+  a2_name:'Certificats CEE', a2_amt:'jusqu\'à 4 000 €', a2_desc:'Primes versées par les fournisseurs d\'énergie (EDF, Engie…) en échange d\'économies d\'énergie certifiées.', a2_tag:'Cumulable avec MPR',
+  a3_name:'TVA 5,5%', a3_amt:'économie 14,5%', a3_desc:'Taux réduit de TVA sur tous les travaux de rénovation énergétique (vs 20% standard). Économie directe sur facture.', a3_tag:'Automatique RGE',
+  a4_name:'Éco-PTZ', a4_amt:'jusqu\'à 50 000 €', a4_desc:'Prêt à taux zéro pour financer le reste à charge. Aucune avance de trésorerie pour les ménages modestes.', a4_tag:'Taux 0% · 20 ans max',
+  a5_name:'Prime MAR', a5_amt:'jusqu\'à 2 000 €', a5_desc:'Mon Accompagnateur Rénov\' — aide pour le pilotage de votre dossier en Parcours Accompagné (T1 et T2 : prise en charge 100%).', a5_tag:'Parcours Accompagné',
+  a6_name:'Parcours Accompagné', a6_amt:'jusqu\'à 32 000 €', a6_desc:'Le maximum légal : MPR + MAR + bonus passoire. PSG Energy vous accompagne de A à Z, sans avance.', a6_cta:'Simuler →',
+  proc_badge:'🚀 Notre processus', proc_title:'De la simulation à l\'installation en 4 étapes',
+  p1_title:'Simulation gratuite', p1_desc:'60 secondes pour estimer toutes vos aides ANAH 2026 selon votre profil.',
+  p2_title:'Devis sous 24h', p2_desc:'Un expert PSG Energy vous contacte et prépare un devis personnalisé signable en ligne.',
+  p3_title:'Dossier ANAH', p3_desc:'Nous gérons 100% du dossier administratif ANAH en votre nom. Zéro paperasse.',
+  p4_title:'Installation RGE', p4_desc:'Nos partenaires certifiés installent en 2 à 18 jours selon l\'équipement choisi.',
+  exp_badge:'Nos experts', exp_title:'Des spécialistes RGE à votre service', exp_sub:'Chaque projet est suivi par un expert dédié, certifié et disponible 6j/7.',
+  faq_title:'Questions fréquentes',
+  cta_title:'Prêt à réduire votre facture énergie ?', cta_sub:'Laissez-nous votre numéro — un expert PSG Energy vous rappelle sous 24h, sans engagement.',
+  cta_ph_nom:'Votre prénom', cta_ph_tel:'Votre téléphone', cta_btn:'Être rappelé →',
+  cta_confirm:'✓ Demande reçue — un expert vous contacte sous 24h !',
+  cta_mention:'En soumettant ce formulaire, vous acceptez d\'être contacté par PSG Energy concernant votre projet de rénovation. Données traitées selon notre <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">politique de confidentialité</a>. Pas de démarchage abusif.',
+  footer_about:'Régie commerciale spécialisée en rénovation énergétique. Vente d\'équipements via installateurs RGE certifiés en Île-de-France.',
+  footer_sol:'Solutions', footer_sim:'Simulateur ANAH', footer_pac:'Pompe à chaleur', footer_iso:'Isolation', footer_pv:'Panneaux solaires', footer_afr:'Afrique / CEMAC',
+  footer_cie:'Entreprise', footer_ml:'Mentions légales', footer_pc:'Confidentialité', footer_par:'Espace partenaires',
+  footer_contact:'Contact', footer_rights:'Tous droits réservés', footer_rgpd:'RGPD conforme',
+  elia_label:'Élia · Experte ANAH',
+  faq:[
+    {q:'Qui peut bénéficier des aides ANAH 2026 ?',a:'Tout propriétaire occupant ou bailleur d\'un logement de plus de 15 ans peut bénéficier des aides MaPrimeRénov. Les ménages modestes et très modestes (T1/T2) obtiennent les taux les plus élevés — jusqu\'à 80% du coût HT en Parcours Accompagné.'},
+    {q:'Combien de temps dure le processus de A à Z ?',a:'De votre premier contact à la fin d\'installation : comptez 6 à 12 semaines. Devis sous 24h, accord ANAH en 3 à 6 semaines, installation en 2 à 18 jours. PSG Energy gère toutes les démarches administratives.'},
+    {q:'Dois-je avancer les frais ?',a:'Non. Pour les ménages T1 (très modestes), les aides MPR sont versées directement aux installateurs. Pour les autres tranches, l\'Éco-PTZ à taux 0% couvre le reste à charge sans avance de trésorerie.'},
+    {q:'Qu\'est-ce que le Parcours Accompagné ?',a:'Le maximum légal des aides ANAH, déclenché pour une Rénovation d\'Ampleur (minimum 2 gestes dont 1 isolation). PSG Energy coordonne votre dossier MAR et vous permet de cumuler MPR Ampleur + prime MAR + bonus passoire, soit jusqu\'à 32 000 €.'},
+    {q:'PSG Energy installe-t-elle les équipements ?',a:'Non. PSG Energy est une régie commerciale : nous calculons vos aides, gérons votre dossier ANAH et coordonnons nos partenaires installateurs certifiés RGE (Kwanthic, Le Solariste).'},
+    {q:'Les aides sont-elles disponibles en zone Afrique / CEMAC ?',a:'Les aides ANAH sont réservées aux logements situés en France métropolitaine. PSG Energy opère également au Congo Brazzaville et en zone CEMAC avec des offres adaptées.'}
+  ]
+},
+en: {
+  langBarTxt:'🌍 Understand your grants in your language',
+  nav_sim:'Simulator', nav_sol:'Solutions', nav_pro:'Partners', nav_afr:'Africa', nav_cta:'Free Quote →',
+  badge1:'✓ Official ANAH 2026', badge2:'⚡ Response in 24h', badge3:'🏆 Certified RGE Experts',
+  hero_h1:'The State covers<br>up to <span class="accent">71%</span><br>of your works',
+  hero_sub:'MaPrimeRénov, CEE, 5.5% VAT, Éco-PTZ, MAR — PSG Energy stacks all your 2026 grants and guides you for free in Île-de-France.',
+  hero_cta1:'Calculate my grants →', hero_cta2:'Free quote', trust3_lbl:'127 client reviews',
+  sim_box_title:'⚡ Calculate your grants in <span>60 seconds</span>',
+  sim_lbl_tranche:'Your tax bracket', sim_lbl_geste:'Planned works', sim_lbl_cp:'Postal code',
+  sim_sel:'— Select —',
+  sim_t1:'Very low income (< €21,805/yr)', sim_t2:'Low income (< €26,939/yr)',
+  sim_t3:'Intermediate (< €40,018/yr)', sim_t4:'Higher income (above)',
+  g_pac:'Air/Water Heat Pump', g_iso_c:'Loft insulation', g_iso_m:'External wall insulation',
+  g_men:'Windows / French doors', g_cet:'Thermodynamic water heater', g_pv:'Solar panels',
+  sim_btn:'Calculate my grants →', sim_res_lbl:'estimated grants for your project',
+  sim_cta2:'Full simulation + Free quote →',
+  stat1_pre:'up to ', stat1_lbl:'Cumulated ANAH grants 2026', stat2_lbl:'Maximum State coverage',
+  stat3_lbl:'Quote response time', stat4_lbl:'ANAH files handled end-to-end',
+  aides_badge:'💰 ANAH Grants 2026', aides_title:'All grants stacked for you',
+  aides_sub:'PSG Energy identifies and stacks every grant you are entitled to. Zero administrative steps on your end.',
+  a1_name:'MaPrimeRénov (MPR)', a1_amt:'up to €30,000', a1_desc:'ANAH subsidy based on your income. Band T1: up to 80% of cost excl. VAT via Accompanied Journey.', a1_tag:'Per work item or Whole-house renovation',
+  a2_name:'CEE Certificates', a2_amt:'up to €4,000', a2_desc:'Bonuses paid by energy suppliers (EDF, Engie…) in exchange for certified energy savings.', a2_tag:'Stackable with MPR',
+  a3_name:'VAT 5.5%', a3_amt:'14.5% saving', a3_desc:'Reduced VAT rate on all energy renovation works (vs 20% standard). Direct saving on invoice.', a3_tag:'Automatic with RGE',
+  a4_name:'Éco-PTZ', a4_amt:'up to €50,000', a4_desc:'Zero-rate loan to cover the remaining cost. No upfront cash outlay for low-income households.', a4_tag:'0% rate · up to 20 years',
+  a5_name:'MAR Grant', a5_amt:'up to €2,000', a5_desc:'Mon Accompagnateur Rénov\' — assistance grant for filing your Accompanied Journey dossier (T1 & T2: 100% covered).', a5_tag:'Accompanied Journey',
+  a6_name:'Accompanied Journey', a6_amt:'up to €32,000', a6_desc:'The legal maximum: MPR + MAR + thermal sieve bonus. PSG Energy guides you from A to Z, with no upfront payment.', a6_cta:'Simulate →',
+  proc_badge:'🚀 Our process', proc_title:'From simulation to installation in 4 steps',
+  p1_title:'Free simulation', p1_desc:'60 seconds to estimate all your ANAH 2026 grants based on your profile.',
+  p2_title:'Quote in 24h', p2_desc:'A PSG Energy expert contacts you and prepares a personalised quote signable online.',
+  p3_title:'ANAH file', p3_desc:'We handle 100% of the ANAH administrative file on your behalf. Zero paperwork.',
+  p4_title:'RGE installation', p4_desc:'Our certified partners install in 2 to 18 days depending on the chosen equipment.',
+  exp_badge:'Our experts', exp_title:'RGE specialists at your service', exp_sub:'Every project is managed by a dedicated, certified expert available 6 days a week.',
+  faq_title:'Frequently asked questions',
+  cta_title:'Ready to cut your energy bill?', cta_sub:'Leave us your number — a PSG Energy expert calls you back within 24h, no commitment.',
+  cta_ph_nom:'Your first name', cta_ph_tel:'Your phone number', cta_btn:'Request a callback →',
+  cta_confirm:'✓ Request received — an expert will contact you within 24h!',
+  cta_mention:'By submitting this form you agree to be contacted by PSG Energy about your renovation project. Data processed per our <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">privacy policy</a>. No spam — unsubscribe in 1 click.',
+  footer_about:'Commercial agency specialised in energy renovation. Equipment sales via certified RGE installers in Île-de-France.',
+  footer_sol:'Solutions', footer_sim:'ANAH Simulator', footer_pac:'Heat pump', footer_iso:'Insulation', footer_pv:'Solar panels', footer_afr:'Africa / CEMAC',
+  footer_cie:'Company', footer_ml:'Legal notice', footer_pc:'Privacy', footer_par:'Partner area',
+  footer_contact:'Contact', footer_rights:'All rights reserved', footer_rgpd:'GDPR compliant',
+  elia_label:'Élia · ANAH Expert',
+  faq:[
+    {q:'Who can benefit from ANAH 2026 grants?',a:'Any owner-occupier or landlord of a home more than 15 years old can receive MaPrimeRénov grants. Low and very low income households (T1/T2) get the highest rates — up to 80% of cost excl. VAT via the Accompanied Journey.'},
+    {q:'How long does the process take end to end?',a:'From first contact to end of installation: allow 6 to 12 weeks. Quote within 24h, ANAH approval in 3 to 6 weeks, installation in 2 to 18 days. PSG Energy handles all administrative steps.'},
+    {q:'Do I need to pay upfront?',a:'No. For T1 (very low income) households, MPR grants are paid directly to the installers. For other brackets, the 0% Éco-PTZ loan covers the remaining cost with no cash advance required.'},
+    {q:'What is the Accompanied Journey?',a:'The legal maximum for ANAH grants, triggered by a Whole-House Renovation (minimum 2 works items including at least 1 insulation measure). PSG Energy coordinates your MAR file and stacks MPR Ampleur + MAR grant + thermal-sieve bonus, totalling up to €32,000.'},
+    {q:'Does PSG Energy install the equipment?',a:'No. PSG Energy is a commercial agency: we calculate your grants, handle your ANAH file, and coordinate our certified RGE partner installers (Kwanthic, Le Solariste).'},
+    {q:'Are grants available in Africa / CEMAC?',a:'ANAH grants apply only to properties in metropolitan France. PSG Energy also operates in Congo Brazzaville and the CEMAC zone with tailored renewable energy offers.'}
+  ]
+},
+ar: {
+  langBarTxt:'🌍 اكتشف دعمك بلغتك',
+  nav_sim:'محاكاة', nav_sol:'الحلول', nav_pro:'الشركاء', nav_afr:'أفريقيا', nav_cta:'عرض مجاني ←',
+  badge1:'✓ ANAH 2026 رسمي', badge2:'⚡ رد خلال 24 ساعة', badge3:'🏆 خبراء RGE معتمدون',
+  hero_h1:'الدولة تدفع<br>حتى <span class="accent">71%</span><br>من تكلفة أشغالك',
+  hero_sub:'MaPrimeRénov وCEE وTVA 5.5% وÉco-PTZ وMAR — PSG Energy تجمع كل مساعداتك لعام 2026 وترافقك مجاناً في إيل-دو-فرانس.',
+  hero_cta1:'احسب مساعداتي ←', hero_cta2:'عرض مجاني', trust3_lbl:'127 تقييم عميل',
+  sim_box_title:'⚡ احسب مساعداتك في <span>60 ثانية</span>',
+  sim_lbl_tranche:'وضعك الضريبي', sim_lbl_geste:'الأشغال المخططة', sim_lbl_cp:'الرمز البريدي',
+  sim_sel:'— اختر —',
+  sim_t1:'منخفض جداً (دخل < 21,805 €/سنة)', sim_t2:'منخفض (< 26,939 €/سنة)',
+  sim_t3:'متوسط (< 40,018 €/سنة)', sim_t4:'مرتفع (ما فوق)',
+  g_pac:'مضخة حرارة هواء/ماء', g_iso_c:'عزل السقف المفقود', g_iso_m:'عزل الجدران الخارجية',
+  g_men:'نوافذ / أبواب زجاجية', g_cet:'سخان مائي ديناميكي', g_pv:'ألواح شمسية',
+  sim_btn:'احسب مساعداتي ←', sim_res_lbl:'من الدعم المقدَّر لمشروعك',
+  sim_cta2:'محاكاة كاملة + عرض مجاني ←',
+  stat1_pre:'حتى ', stat1_lbl:'مساعدات ANAH 2026 المجمَّعة', stat2_lbl:'أقصى تغطية من الدولة',
+  stat3_lbl:'وقت الرد على العروض', stat4_lbl:'ملفات ANAH المُدارة بالكامل',
+  aides_badge:'💰 مساعدات ANAH 2026', aides_title:'جميع المساعدات مجمَّعة لك',
+  aides_sub:'PSG Energy تحدد وتجمع كل مساعدة تستحقها. صفر إجراءات إدارية من جانبك.',
+  a1_name:'MaPrimeRénov (MPR)', a1_amt:'حتى 30,000 €', a1_desc:'منحة ANAH حسب دخلك. الشريحة T1: حتى 80% من التكلفة باستثناء TVA عبر مسار مُرافق.', a1_tag:'لكل إجراء أو تجديد شامل',
+  a2_name:'شهادات CEE', a2_amt:'حتى 4,000 €', a2_desc:'مكافآت من موردي الطاقة (EDF, Engie...) مقابل توفير طاقة معتمد.', a2_tag:'قابل للجمع مع MPR',
+  a3_name:'TVA 5.5%', a3_amt:'توفير 14.5%', a3_desc:'معدل TVA مخفض على جميع أعمال التجديد الطاقوي (مقابل 20% عادي). توفير مباشر في الفاتورة.', a3_tag:'تلقائي مع RGE',
+  a4_name:'Éco-PTZ', a4_amt:'حتى 50,000 €', a4_desc:'قرض بمعدل صفر لتمويل التكلفة المتبقية. لا تسبيق نقدي للأسر محدودة الدخل.', a4_tag:'معدل 0% · حتى 20 سنة',
+  a5_name:'منحة MAR', a5_amt:'حتى 2,000 €', a5_desc:'Mon Accompagnateur Rénov\' — مساعدة لتسيير ملف المسار المُرافق (T1 وT2: تغطية 100%).', a5_tag:'المسار المُرافق',
+  a6_name:'المسار المُرافق', a6_amt:'حتى 32,000 €', a6_desc:'الحد القانوني الأقصى: MPR + MAR + مكافأة المبنى الهدار. PSG Energy ترافقك من أوله لآخره بدون تسبيق.', a6_cta:'محاكاة ←',
+  proc_badge:'🚀 عمليتنا', proc_title:'من المحاكاة إلى التركيب في 4 خطوات',
+  p1_title:'محاكاة مجانية', p1_desc:'60 ثانية لتقدير جميع مساعداتك لعام ANAH 2026 حسب ملفك.',
+  p2_title:'عرض خلال 24 ساعة', p2_desc:'خبير PSG Energy يتواصل معك ويعد عرضاً شخصياً قابلاً للتوقيع أون لاين.',
+  p3_title:'ملف ANAH', p3_desc:'ندير 100% من الملف الإداري لـ ANAH باسمك. صفر أوراق.',
+  p4_title:'تركيب RGE', p4_desc:'شركاؤنا المعتمدون يركبون في 2 إلى 18 يوماً حسب التجهيز المختار.',
+  exp_badge:'خبراؤنا', exp_title:'متخصصون RGE في خدمتك', exp_sub:'كل مشروع يُتابعه خبير مخصص معتمد متاح 6 أيام/أسبوع.',
+  faq_title:'أسئلة متكررة',
+  cta_title:'مستعد لتخفيض فاتورة طاقتك؟', cta_sub:'اتركنا رقمك — خبير PSG Energy يتصل بك خلال 24 ساعة، بدون التزام.',
+  cta_ph_nom:'اسمك الأول', cta_ph_tel:'رقم هاتفك', cta_btn:'طلب اتصال ←',
+  cta_confirm:'✓ تم استلام طلبك — سيتواصل معك خبير خلال 24 ساعة!',
+  cta_mention:'بإرسال هذا النموذج توافق على التواصل من PSG Energy بشأن مشروعك. البيانات مُعالَجة وفق <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">سياسة الخصوصية</a>.',
+  footer_about:'وكالة تجارية متخصصة في تجديد الطاقة. بيع تجهيزات عبر مركبين RGE معتمدين في إيل-دو-فرانس.',
+  footer_sol:'الحلول', footer_sim:'محاكي ANAH', footer_pac:'مضخة حرارة', footer_iso:'عزل', footer_pv:'ألواح شمسية', footer_afr:'أفريقيا / CEMAC',
+  footer_cie:'الشركة', footer_ml:'الإشعارات القانونية', footer_pc:'الخصوصية', footer_par:'منطقة الشركاء',
+  footer_contact:'تواصل', footer_rights:'جميع الحقوق محفوظة', footer_rgpd:'متوافق مع RGPD',
+  elia_label:'Élia · خبيرة ANAH',
+  faq:[
+    {q:'من يستطيع الاستفادة من مساعدات ANAH 2026؟',a:'أي مالك ساكن أو مؤجِّر لمسكن يتجاوز 15 سنة يمكنه الاستفادة من MaPrimeRénov. الأسر محدودة ومنخفضة الدخل (T1/T2) تحصل على أعلى نسب — حتى 80% من التكلفة باستثناء TVA عبر المسار المُرافق.'},
+    {q:'كم تستغرق العملية من أولها لآخرها؟',a:'من أول تواصل إلى نهاية التركيب: احسب 6 إلى 12 أسبوعاً. عرض خلال 24 ساعة، موافقة ANAH في 3 إلى 6 أسابيع، تركيب في 2 إلى 18 يوماً. PSG Energy تدير جميع الإجراءات الإدارية.'},
+    {q:'هل يجب أن أدفع مسبقاً؟',a:'لا. للأسر T1 (منخفضة الدخل جداً)، تُدفع مساعدات MPR مباشرة للمركبين. للشرائح الأخرى، قرض Éco-PTZ بمعدل 0% يغطي التكلفة المتبقية بدون تسبيق نقدي.'},
+    {q:'ما هو المسار المُرافق؟',a:'الحد الأقصى القانوني لمساعدات ANAH، يُفعَّل لتجديد شامل (حد أدنى إجراءَين منهما عزل واحد). PSG Energy تنسق ملف MAR وتجمع MPR Ampleur + منحة MAR + مكافأة المبنى الهدار، أي حتى 32,000 €.'},
+    {q:'هل تركّب PSG Energy التجهيزات؟',a:'لا. PSG Energy وكالة تجارية: نحسب مساعداتك، وندير ملف ANAH، وننسق مع مركبينا الشركاء المعتمدين RGE.'},
+    {q:'هل المساعدات متاحة في أفريقيا / CEMAC؟',a:'مساعدات ANAH مخصصة للمساكن في فرنسا البلدية. PSG Energy تعمل أيضاً في الكونغو برازافيل ومنطقة CEMAC بعروض مكيَّفة.'}
+  ]
+},
+pt: {
+  langBarTxt:'🌍 Descubra os seus subsídios no seu idioma',
+  nav_sim:'Simulador', nav_sol:'Soluções', nav_pro:'Parceiros', nav_afr:'África', nav_cta:'Orçamento grátis →',
+  badge1:'✓ ANAH 2026 Oficial', badge2:'⚡ Resposta em 24h', badge3:'🏆 Especialistas RGE Certificados',
+  hero_h1:'O Estado paga<br>até <span class="accent">71%</span><br>das suas obras',
+  hero_sub:'MaPrimeRénov, CEE, IVA 5,5%, Éco-PTZ, MAR — PSG Energy acumula todos os seus subsídios 2026 e acompanha-o gratuitamente em Île-de-France.',
+  hero_cta1:'Calcular os meus subsídios →', hero_cta2:'Orçamento grátis', trust3_lbl:'127 avaliações de clientes',
+  sim_box_title:'⚡ Calcule os seus subsídios em <span>60 segundos</span>',
+  sim_lbl_tranche:'A sua situação fiscal', sim_lbl_geste:'Obras previstas', sim_lbl_cp:'Código postal',
+  sim_sel:'— Selecione —',
+  sim_t1:'Muito baixo (rendimento < 21 805 €/ano)', sim_t2:'Baixo (< 26 939 €/ano)',
+  sim_t3:'Intermédio (< 40 018 €/ano)', sim_t4:'Superior (acima)',
+  g_pac:'Bomba de calor ar/água', g_iso_c:'Isolamento de telhado', g_iso_m:'Isolamento de paredes externas',
+  g_men:'Janelas / Portas-janelas', g_cet:'Esquentador termodinâmico', g_pv:'Painéis solares',
+  sim_btn:'Calcular os meus subsídios →', sim_res_lbl:'de subsídios estimados para o seu projeto',
+  sim_cta2:'Simulação completa + Orçamento grátis →',
+  stat1_pre:'até ', stat1_lbl:'Subsídios ANAH 2026 acumulados', stat2_lbl:'Cobertura máxima do Estado',
+  stat3_lbl:'Prazo de resposta ao orçamento', stat4_lbl:'Processos ANAH geridos end-to-end',
+  aides_badge:'💰 Subsídios ANAH 2026', aides_title:'Todos os subsídios acumulados para si',
+  aides_sub:'PSG Energy identifica e acumula cada subsídio a que tem direito. Zero procedimentos administrativos da sua parte.',
+  a1_name:'MaPrimeRénov (MPR)', a1_amt:'até 30 000 €', a1_desc:'Subsídio ANAH segundo os seus rendimentos. Faixa T1: até 80% do custo s/ IVA via Percurso Acompanhado.', a1_tag:'Por obra ou Renovação de amplitude',
+  a2_name:'Certificados CEE', a2_amt:'até 4 000 €', a2_desc:'Prémios pagos pelos fornecedores de energia (EDF, Engie…) em troca de poupanças de energia certificadas.', a2_tag:'Acumulável com MPR',
+  a3_name:'IVA 5,5%', a3_amt:'poupança 14,5%', a3_desc:'Taxa reduzida de IVA em todas as obras de renovação energética (vs 20% padrão). Poupança direta na fatura.', a3_tag:'Automático RGE',
+  a4_name:'Éco-PTZ', a4_amt:'até 50 000 €', a4_desc:'Empréstimo a taxa zero para financiar o remanescente. Sem adiantamento de tesouraria para famílias de baixos rendimentos.', a4_tag:'Taxa 0% · até 20 anos',
+  a5_name:'Subsídio MAR', a5_amt:'até 2 000 €', a5_desc:'Mon Accompagnateur Rénov\' — ajuda para o acompanhamento do seu processo no Percurso Acompanhado (T1 e T2: 100% coberto).', a5_tag:'Percurso Acompanhado',
+  a6_name:'Percurso Acompanhado', a6_amt:'até 32 000 €', a6_desc:'O máximo legal: MPR + MAR + bónus passoire. PSG Energy acompanha-o de A a Z, sem adiantamento.', a6_cta:'Simular →',
+  proc_badge:'🚀 O nosso processo', proc_title:'Da simulação à instalação em 4 etapas',
+  p1_title:'Simulação gratuita', p1_desc:'60 segundos para estimar todos os seus subsídios ANAH 2026 com base no seu perfil.',
+  p2_title:'Orçamento em 24h', p2_desc:'Um especialista PSG Energy contacta-o e prepara um orçamento personalizado assinável online.',
+  p3_title:'Processo ANAH', p3_desc:'Gerimos 100% do processo administrativo ANAH em seu nome. Zero burocracia.',
+  p4_title:'Instalação RGE', p4_desc:'Os nossos parceiros certificados instalam em 2 a 18 dias consoante o equipamento escolhido.',
+  exp_badge:'Os nossos especialistas', exp_title:'Especialistas RGE ao seu serviço', exp_sub:'Cada projeto é acompanhado por um especialista dedicado, certificado e disponível 6 dias/semana.',
+  faq_title:'Perguntas frequentes',
+  cta_title:'Pronto para reduzir a sua fatura de energia?', cta_sub:'Deixe-nos o seu número — um especialista PSG Energy liga-lhe em 24h, sem compromisso.',
+  cta_ph_nom:'O seu nome', cta_ph_tel:'O seu telefone', cta_btn:'Pedir retorno →',
+  cta_confirm:'✓ Pedido recebido — um especialista entrará em contacto em 24h!',
+  cta_mention:'Ao submeter este formulário aceita ser contactado pela PSG Energy. Dados tratados conforme a nossa <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">política de privacidade</a>.',
+  footer_about:'Agência comercial especializada em renovação energética. Venda de equipamentos via instaladores RGE certificados em Île-de-France.',
+  footer_sol:'Soluções', footer_sim:'Simulador ANAH', footer_pac:'Bomba de calor', footer_iso:'Isolamento', footer_pv:'Painéis solares', footer_afr:'África / CEMAC',
+  footer_cie:'Empresa', footer_ml:'Avisos legais', footer_pc:'Privacidade', footer_par:'Área de parceiros',
+  footer_contact:'Contacto', footer_rights:'Todos os direitos reservados', footer_rgpd:'Conforme RGPD',
+  elia_label:'Élia · Especialista ANAH',
+  faq:[
+    {q:'Quem pode beneficiar dos subsídios ANAH 2026?',a:'Qualquer proprietário ocupante ou senhorio de uma habitação com mais de 15 anos pode receber subsídios MaPrimeRénov. Famílias de rendimentos baixos e muito baixos (T1/T2) obtêm as taxas mais elevadas — até 80% do custo s/IVA no Percurso Acompanhado.'},
+    {q:'Quanto tempo demora o processo do início ao fim?',a:'Do primeiro contacto ao fim da instalação: conte 6 a 12 semanas. Orçamento em 24h, aprovação ANAH em 3 a 6 semanas, instalação em 2 a 18 dias. PSG Energy gere todos os passos administrativos.'},
+    {q:'Tenho de adiantar os fundos?',a:'Não. Para as famílias T1 (rendimento muito baixo), os subsídios MPR são pagos diretamente aos instaladores. Para as outras faixas, o Éco-PTZ a taxa 0% cobre o remanescente sem necessidade de adiantamento.'},
+    {q:'O que é o Percurso Acompanhado?',a:'O máximo legal de subsídios ANAH, ativado para uma Renovação de Amplitude (mínimo 2 intervenções incluindo pelo menos 1 de isolamento). PSG Energy coordena o seu processo MAR e acumula MPR Ampleur + subsídio MAR + bónus passoire, totalizando até 32 000 €.'},
+    {q:'A PSG Energy instala os equipamentos?',a:'Não. PSG Energy é uma agência comercial: calculamos os seus subsídios, gerimos o seu processo ANAH e coordenamos os nossos parceiros instaladores certificados RGE.'},
+    {q:'Os subsídios estão disponíveis em África / CEMAC?',a:'Os subsídios ANAH aplicam-se apenas a imóveis em França continental. PSG Energy opera também no Congo Brazavile e na zona CEMAC com ofertas adaptadas em energias renováveis.'}
+  ]
+},
+tr: {
+  langBarTxt:'🌍 Desteklerinizi kendi dilinizde keşfedin',
+  nav_sim:'Simülatör', nav_sol:'Çözümler', nav_pro:'Ortaklar', nav_afr:'Afrika', nav_cta:'Ücretsiz Teklif →',
+  badge1:'✓ Resmi ANAH 2026', badge2:'⚡ 24 saatte yanıt', badge3:'🏆 Sertifikalı RGE Uzmanları',
+  hero_h1:'Devlet, işlerinizin<br><span class="accent">%71\'ine</span><br>kadar öder',
+  hero_sub:'MaPrimeRénov, CEE, KDV 5.5%, Éco-PTZ, MAR — PSG Energy 2026 desteklerinizin tamamını biriktirir ve Île-de-France\'ta sizi ücretsiz yönlendirir.',
+  hero_cta1:'Desteklerimi hesapla →', hero_cta2:'Ücretsiz teklif', trust3_lbl:'127 müşteri değerlendirmesi',
+  sim_box_title:'⚡ <span>60 saniyede</span> desteklerinizi hesaplayın',
+  sim_lbl_tranche:'Vergi durumunuz', sim_lbl_geste:'Planlanan işler', sim_lbl_cp:'Posta kodu',
+  sim_sel:'— Seçin —',
+  sim_t1:'Çok düşük gelir (< 21.805 €/yıl)', sim_t2:'Düşük gelir (< 26.939 €/yıl)',
+  sim_t3:'Orta gelir (< 40.018 €/yıl)', sim_t4:'Yüksek gelir (üzeri)',
+  g_pac:'Hava/Su Isı Pompası', g_iso_c:'Tavan yalıtımı', g_iso_m:'Dış duvar yalıtımı',
+  g_men:'Pencereler / Fransız kapılar', g_cet:'Termodinamik su ısıtıcı', g_pv:'Güneş panelleri',
+  sim_btn:'Desteklerimi hesapla →', sim_res_lbl:'projeniz için tahmini destek',
+  sim_cta2:'Tam simülasyon + Ücretsiz teklif →',
+  stat1_pre:'', stat1_lbl:'Birikimli ANAH 2026 destekleri', stat2_lbl:'Maksimum devlet karşılama',
+  stat3_lbl:'Teklif yanıt süresi', stat4_lbl:'Tamamen yönetilen ANAH dosyaları',
+  aides_badge:'💰 ANAH 2026 Destekleri', aides_title:'Sizin için tüm destekler biriktirildi',
+  aides_sub:'PSG Energy hak kazandığınız her desteği tespit eder ve biriktir. Sizden sıfır idari adım.',
+  a1_name:'MaPrimeRénov (MPR)', a1_amt:'70.000 €\'ya kadar', a1_desc:'Gelirinize göre ANAH sübvansiyonu. T1 dilimi: Refakatçi Yolculuk ile KDV hariç maliyetin %80\'ine kadar.', a1_tag:'İş başına veya Bütüncül tadilat',
+  a2_name:'CEE Sertifikaları', a2_amt:'4.000 €\'ya kadar', a2_desc:'Enerji tedarikçileri (EDF, Engie…) tarafından sertifikalı enerji tasarrufları karşılığında ödenen primler.', a2_tag:'MPR ile kümülatif',
+  a3_name:'KDV 5.5%', a3_amt:'%14.5 tasarruf', a3_desc:'Tüm enerji yenileme işleri için indirimli KDV oranı (standart %20\'ye karşı). Faturada doğrudan tasarruf.', a3_tag:'RGE ile otomatik',
+  a4_name:'Éco-PTZ', a4_amt:'50.000 €\'ya kadar', a4_desc:'Kalan maliyeti finanse etmek için sıfır faizli kredi. Düşük gelirli haneler için nakit avans gerekmez.', a4_tag:'%0 faiz · 20 yıla kadar',
+  a5_name:'MAR Yardımı', a5_amt:'2.000 €\'ya kadar', a5_desc:'Mon Accompagnateur Rénov\' — Refakatçi Yolculuk dosyanızı yönetmek için yardım (T1 ve T2: %100 karşılanır).', a5_tag:'Refakatçi Yolculuk',
+  a6_name:'Refakatçi Yolculuk', a6_amt:'32.000 €\'ya kadar', a6_desc:'Yasal maksimum: MPR + MAR + termal süzgeç bonusu. PSG Energy baştan sona sizi yönlendirir, ön ödeme olmadan.', a6_cta:'Simüle et →',
+  proc_badge:'🚀 Sürecimiz', proc_title:'Simülasyondan montaja 4 adımda',
+  p1_title:'Ücretsiz simülasyon', p1_desc:'Profilinize göre tüm ANAH 2026 desteklerinizi tahmin etmek için 60 saniye.',
+  p2_title:'24 saatte teklif', p2_desc:'Bir PSG Energy uzmanı sizi arar ve çevrimiçi imzalanabilir kişiselleştirilmiş bir teklif hazırlar.',
+  p3_title:'ANAH dosyası', p3_desc:'ANAH idari dosyasının %100\'ünü adınıza biz yönetiriz. Sıfır evrak.',
+  p4_title:'RGE montajı', p4_desc:'Sertifikalı ortaklarımız seçilen ekipmana göre 2 ila 18 günde monte eder.',
+  exp_badge:'Uzmanlarımız', exp_title:'Hizmetinizde RGE uzmanları', exp_sub:'Her proje, haftada 6 gün müsait sertifikalı bir uzman tarafından takip edilir.',
+  faq_title:'Sık sorulan sorular',
+  cta_title:'Enerji faturanızı düşürmeye hazır mısınız?', cta_sub:'Numaranızı bırakın — bir PSG Energy uzmanı 24 saat içinde sizi geri arar, taahhütsüz.',
+  cta_ph_nom:'Adınız', cta_ph_tel:'Telefon numaranız', cta_btn:'Geri arama iste →',
+  cta_confirm:'✓ Talep alındı — bir uzman 24 saat içinde sizinle iletişime geçecek!',
+  cta_mention:'Bu formu göndererek PSG Energy tarafından projeniz hakkında iletişime geçilmeyi kabul edersiniz. Veriler <a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">gizlilik politikamıza</a> uygun olarak işlenir.',
+  footer_about:'Enerji yenileme konusunda uzmanlaşmış ticari ajans. Île-de-France\'ta sertifikalı RGE montajcılar aracılığıyla ekipman satışı.',
+  footer_sol:'Çözümler', footer_sim:'ANAH Simülatörü', footer_pac:'Isı pompası', footer_iso:'Yalıtım', footer_pv:'Güneş panelleri', footer_afr:'Afrika / CEMAC',
+  footer_cie:'Şirket', footer_ml:'Yasal bildirimler', footer_pc:'Gizlilik', footer_par:'Ortak alanı',
+  footer_contact:'İletişim', footer_rights:'Tüm hakları saklıdır', footer_rgpd:'RGPD uyumlu',
+  elia_label:'Élia · ANAH Uzmanı',
+  faq:[
+    {q:'ANAH 2026 desteklerinden kimler yararlanabilir?',a:'15 yıldan eski bir mülkün herhangi bir kiracı-maliki veya kiraya vereni MaPrimeRénov desteklerinden yararlanabilir. Düşük ve çok düşük gelirli haneler (T1/T2) en yüksek oranları alır — Refakatçi Yolculuk\'ta KDV hariç maliyetin %80\'ine kadar.'},
+    {q:'Süreç baştan sona ne kadar sürer?',a:'İlk temastan montajın sonuna kadar: 6 ila 12 hafta hesaplayın. 24 saatte teklif, 3 ila 6 haftada ANAH onayı, 2 ila 18 günde montaj. PSG Energy tüm idari adımları yönetir.'},
+    {q:'Peşin ödeme yapmam gerekiyor mu?',a:'Hayır. T1 (çok düşük gelirli) haneler için MPR destekleri doğrudan montajcılara ödenir. Diğer dilimler için %0 faizli Éco-PTZ kredisi kalan maliyeti nakit avans gerektirmeksizin karşılar.'},
+    {q:'Refakatçi Yolculuk nedir?',a:'ANAH desteklerinin yasal maksimumu; en az 1 yalıtım dahil minimum 2 iş kalemi ile Bütüncül Tadilat için tetiklenir. PSG Energy MAR dosyanızı koordine eder ve MPR Ampleur + MAR yardımı + termal süzgeç bonusunu biriktirir: toplam 32.000 €\'ya kadar.'},
+    {q:'PSG Energy ekipmanları monte ediyor mu?',a:'Hayır. PSG Energy bir ticari ajanstır: desteklerinizi hesaplıyor, ANAH dosyanızı yönetiyor ve sertifikalı RGE ortak montajcılarımızı koordine ediyoruz.'},
+    {q:'Destekler Afrika / CEMAC bölgesinde de geçerli mi?',a:'ANAH destekleri yalnızca Fransa ana karasındaki mülkler için geçerlidir. PSG Energy aynı zamanda Kongo Brazavil ve CEMAC bölgesinde uyarlanmış yenilenebilir enerji teklifleriyle faaliyet göstermektedir.'}
+  ]
+},
+zh: {
+  langBarTxt:'🌍 用您的语言了解您的补贴',
+  nav_sim:'模拟器', nav_sol:'解决方案', nav_pro:'合作伙伴', nav_afr:'非洲', nav_cta:'免费报价 →',
+  badge1:'✓ 官方ANAH 2026', badge2:'⚡ 24小时内回复', badge3:'🏆 认证RGE专家',
+  hero_h1:'国家补贴<br>高达 <span class="accent">71%</span><br>的改造费用',
+  hero_sub:'MaPrimeRénov、CEE、TVA 5.5%、Éco-PTZ、MAR — PSG Energy累积您2026年的所有补贴，并在法兰西岛免费为您提供指导。',
+  hero_cta1:'计算我的补贴 →', hero_cta2:'免费报价', trust3_lbl:'127条客户评价',
+  sim_box_title:'⚡ <span>60秒</span>内计算您的补贴',
+  sim_lbl_tranche:'您的税务状况', sim_lbl_geste:'计划中的工程', sim_lbl_cp:'邮政编码',
+  sim_sel:'— 请选择 —',
+  sim_t1:'极低收入（< 21,805 €/年）', sim_t2:'低收入（< 26,939 €/年）',
+  sim_t3:'中等收入（< 40,018 €/年）', sim_t4:'高收入（以上）',
+  g_pac:'空气/水热泵', g_iso_c:'阁楼隔热', g_iso_m:'外墙隔热',
+  g_men:'窗户/法式门', g_cet:'热动力热水器', g_pv:'太阳能电池板',
+  sim_btn:'计算我的补贴 →', sim_res_lbl:'为您的项目估算的补贴',
+  sim_cta2:'完整模拟 + 免费报价 →',
+  stat1_pre:'高达', stat1_lbl:'ANAH 2026累计补贴', stat2_lbl:'国家最高覆盖率',
+  stat3_lbl:'报价响应时间', stat4_lbl:'全程管理的ANAH文件',
+  aides_badge:'💰 ANAH 2026补贴', aides_title:'为您累积所有补贴',
+  aides_sub:'PSG Energy识别并累积您有权获得的每项补贴。您这边零行政手续。',
+  a1_name:'MaPrimeRénov (MPR)', a1_amt:'最高30,000 €', a1_desc:'按收入计算的ANAH补贴。T1档：通过陪伴路径，最高可覆盖不含税成本的80%。', a1_tag:'单项工程或整体翻新',
+  a2_name:'CEE证书', a2_amt:'最高4,000 €', a2_desc:'能源供应商（EDF、Engie…）针对经认证的节能效果支付的奖励金。', a2_tag:'可与MPR叠加',
+  a3_name:'TVA 5.5%', a3_amt:'节省14.5%', a3_desc:'所有节能改造工程适用降低增值税税率（相比标准20%）。账单直接节省。', a3_tag:'RGE自动适用',
+  a4_name:'Éco-PTZ', a4_amt:'最高50,000 €', a4_desc:'零利率贷款用于融资剩余费用。低收入家庭无需预付现金。', a4_tag:'0%利率 · 最长20年',
+  a5_name:'MAR补助', a5_amt:'最高2,000 €', a5_desc:'Mon Accompagnateur Rénov\' — 陪伴路径文件管理补助（T1和T2：100%覆盖）。', a5_tag:'陪伴路径',
+  a6_name:'陪伴路径', a6_amt:'最高32,000 €', a6_desc:'法律上限：MPR + MAR + 热能筛奖励。PSG Energy全程陪伴，无需预付款。', a6_cta:'模拟 →',
+  proc_badge:'🚀 我们的流程', proc_title:'从模拟到安装，4个步骤',
+  p1_title:'免费模拟', p1_desc:'60秒根据您的档案估算所有ANAH 2026补贴。',
+  p2_title:'24小时内报价', p2_desc:'PSG Energy专家联系您，准备个性化的可在线签署报价。',
+  p3_title:'ANAH文件', p3_desc:'我们以您的名义处理100%的ANAH行政文件。零文书工作。',
+  p4_title:'RGE安装', p4_desc:'我们的认证合作伙伴根据所选设备在2到18天内完成安装。',
+  exp_badge:'我们的专家', exp_title:'为您服务的RGE专家', exp_sub:'每个项目由一位专职认证专家跟进，每周工作6天。',
+  faq_title:'常见问题',
+  cta_title:'准备好降低能源账单了吗？', cta_sub:'留下您的号码 — PSG Energy专家在24小时内回拨，无需承诺。',
+  cta_ph_nom:'您的名字', cta_ph_tel:'您的电话', cta_btn:'请求回电 →',
+  cta_confirm:'✓ 请求已收到 — 专家将在24小时内与您联系！',
+  cta_mention:'提交此表格即表示您同意PSG Energy就您的改造项目与您联系。数据按照我们的<a href="/politique-confidentialite.html" style="color:rgba(255,255,255,.5);text-decoration:underline;">隐私政策</a>处理。',
+  footer_about:'专注于节能改造的商业代理机构。通过法兰西岛认证RGE安装商销售设备。',
+  footer_sol:'解决方案', footer_sim:'ANAH模拟器', footer_pac:'热泵', footer_iso:'隔热', footer_pv:'太阳能板', footer_afr:'非洲/CEMAC',
+  footer_cie:'公司', footer_ml:'法律声明', footer_pc:'隐私', footer_par:'合作伙伴区',
+  footer_contact:'联系', footer_rights:'版权所有', footer_rgpd:'符合RGPD',
+  elia_label:'Élia · ANAH专家',
+  faq:[
+    {q:'谁可以享受ANAH 2026补贴？',a:'任何拥有超过15年房龄的自住或出租房产的业主均可申请MaPrimeRénov补贴。低收入和极低收入家庭（T1/T2）享有最高比例——通过陪伴路径，最高可覆盖不含税成本的80%。'},
+    {q:'整个流程需要多长时间？',a:'从第一次联系到安装完成：预计6至12周。报价在24小时内提供，ANAH审批需3至6周，安装需2至18天。PSG Energy处理所有行政步骤。'},
+    {q:'需要预付费用吗？',a:'不需要。对于T1（极低收入）家庭，MPR补贴直接支付给安装商。其他档次可通过0%利率Éco-PTZ贷款覆盖剩余费用，无需现金预付。'},
+    {q:'什么是陪伴路径？',a:'ANAH补贴的法律上限，针对整体翻新（至少2项改造措施，其中至少1项为隔热）触发。PSG Energy协调您的MAR文件，叠加MPR Ampleur + MAR补助 + 热能筛奖励，合计最高32,000 €。'},
+    {q:'PSG Energy负责安装设备吗？',a:'不。PSG Energy是商业代理机构：我们计算您的补贴、管理ANAH文件，并协调我们的认证RGE合作安装商（Kwanthic、Le Solariste）。'},
+    {q:'非洲/CEMAC地区是否可以获得补贴？',a:'ANAH补贴仅适用于法国本土的房产。PSG Energy还在刚果布拉柴维尔和CEMAC地区以定制可再生能源方案开展业务。'}
+  ]
+}
+};
+
+/* ── LANGUE COURANTE ──────────────────────────────────────────── */
+let CL = 'fr';
+
+function T(k) { return (LANGS[CL] || LANGS.fr)[k] || (LANGS.fr[k] || k); }
+
+function setLang(code) {
+  CL = code;
+  const L = LANGS[code] || LANGS.fr;
+  const isRTL = code === 'ar';
+
+  document.documentElement.lang = code;
+  document.documentElement.dir = isRTL ? 'rtl' : 'ltr';
+
+  // Textes data-i18n
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    const k = el.getAttribute('data-i18n');
+    if (L[k] !== undefined) el.innerHTML = L[k];
+  });
+
+  // Placeholders
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el) {
+    const k = el.getAttribute('data-i18n-placeholder');
+    if (L[k] !== undefined) el.placeholder = L[k];
+  });
+
+  // Boutons langue actif
+  document.querySelectorAll('.lp').forEach(function(btn) {
+    const codes = {'🇫🇷 FR':'fr','🇬🇧 EN':'en','🇸🇦 AR':'ar','🇧🇷 PT':'pt','🇹🇷 TR':'tr','🇨🇳 ZH':'zh'};
+    btn.classList.toggle('active', codes[btn.textContent.trim()] === code);
+  });
+
+  // Sélect options
+  const trancheOpts = [L.sim_t1, L.sim_t2, L.sim_t3, L.sim_t4];
+  document.querySelectorAll('#h-tranche option:not(:first-child)').forEach(function(opt, i) {
+    opt.textContent = trancheOpts[i] || opt.textContent;
+  });
+  document.querySelector('#h-tranche option:first-child').textContent = L.sim_sel || '—';
+
+  // Réafficher experts et FAQ dans la nouvelle langue
+  renderExperts();
+  renderFAQ();
+}
+
 /* ── SIMULATEUR RAPIDE HERO ──────────────────────────────────── */
 function simulerRapide() {
   const tranche = document.getElementById('h-tranche').value;
   const geste   = document.getElementById('h-geste').value;
 
   if (!tranche || !geste) {
-    alert('Veuillez sélectionner votre situation fiscale et les travaux envisagés.');
+    alert(T('sim_sel'));
     return;
   }
 
@@ -589,11 +963,11 @@ function simulerRapide() {
       <span class="sim-row-val green">+${r.mpr.toLocaleString('fr-FR')} €</span>
     </div>
     <div class="sim-row">
-      <span class="sim-row-label">Certificats CEE</span>
+      <span class="sim-row-label">CEE</span>
       <span class="sim-row-val green">+${r.cee.toLocaleString('fr-FR')} €</span>
     </div>
     <div class="sim-row">
-      <span class="sim-row-label">Économie TVA 5,5%</span>
+      <span class="sim-row-label">TVA 5,5%</span>
       <span class="sim-row-val green">+${r.tva.toLocaleString('fr-FR')} €</span>
     </div>
     <div class="sim-row" style="border-top:1px solid rgba(255,255,255,.15);padding-top:10px;">
@@ -601,8 +975,8 @@ function simulerRapide() {
       <span class="sim-row-val" style="font-size:1.1rem;">${r.rac.toLocaleString('fr-FR')} €</span>
     </div>
     <div class="sim-row">
-      <span class="sim-row-label">Financement Éco-PTZ</span>
-      <span class="sim-row-val">jusqu'à 30 000 € à 0%</span>
+      <span class="sim-row-label">Éco-PTZ</span>
+      <span class="sim-row-val">${T('a4_amt')}</span>
     </div>
   `;
   document.getElementById('sim-result').style.display = 'block';
@@ -629,35 +1003,9 @@ function renderExperts() {
 }
 
 /* ── FAQ ─────────────────────────────────────────────────────── */
-const FAQ = [
-  {
-    q: 'Qui peut bénéficier des aides ANAH 2026 ?',
-    a: 'Tout propriétaire occupant ou bailleur d\'un logement de plus de 15 ans peut bénéficier des aides MaPrimeRénov. Les ménages modestes et très modestes (tranches T1/T2) obtiennent les taux les plus élevés — jusqu\'à 80% du coût HT en Parcours Accompagné.'
-  },
-  {
-    q: 'Combien de temps dure le processus de A à Z ?',
-    a: 'De votre premier contact à la fin d\'installation : comptez 6 à 12 semaines. Devis sous 24h, accord ANAH en 3 à 6 semaines, installation en 2 à 18 jours selon l\'équipement. PSG Energy gère toutes les démarches administratives.'
-  },
-  {
-    q: 'Dois-je avancer les frais ?',
-    a: 'Non. Pour les ménages T1 (très modestes), les aides MPR sont versées directement aux installateurs. Pour les autres tranches, l\'Éco-PTZ à taux 0% couvre le reste à charge sans avance de trésorerie de votre part.'
-  },
-  {
-    q: 'Qu\'est-ce que le Parcours Accompagné ?',
-    a: 'C\'est le niveau maximum d\'aides ANAH, déclenché lorsque vous réalisez une Rénovation d\'Ampleur (minimum 2 gestes dont 1 d\'isolation) et que vous êtes accompagné par un Mon Accompagnateur Rénov\' agréé. PSG Energy coordonne votre dossier MAR et vous permet de cumuler MPR Ampleur + prime MAR + bonus passoire, soit jusqu\'à 32 000 €.'
-  },
-  {
-    q: 'PSG Energy installe-t-elle les équipements ?',
-    a: 'Non. PSG Energy est une régie commerciale : nous calculons vos aides, gérons votre dossier ANAH et coordonnons l\'intervention de nos partenaires installateurs certifiés RGE (Kwanthic, Le Solariste). Vous bénéficiez ainsi des certifications QualiPAC, Qualibat et QualiSOL nécessaires pour valider vos aides.'
-  },
-  {
-    q: 'Les aides sont-elles disponibles en zone Afrique / CEMAC ?',
-    a: 'Les aides ANAH sont réservées aux logements situés en France métropolitaine. PSG Energy opère également au Congo Brazzaville et en zone CEMAC avec des offres adaptées aux énergies renouvelables hors subventions ANAH. Consultez notre page Afrique pour en savoir plus.'
-  }
-];
-
 function renderFAQ() {
-  document.getElementById('faq-list').innerHTML = FAQ.map(function(f, i) {
+  const faq = T('faq') || LANGS.fr.faq;
+  document.getElementById('faq-list').innerHTML = faq.map(function(f, i) {
     return `
       <div class="faq-item" id="faq-${i}">
         <button class="faq-q" onclick="toggleFAQ(${i})">
@@ -681,14 +1029,14 @@ function soumettreContact(e) {
   const nom = document.getElementById('c-nom').value.trim();
   const tel = document.getElementById('c-tel').value.trim();
 
-  const payload = { nom, tel, source: 'landing_hero', date: new Date().toISOString() };
+  const payload = { nom, tel, source:'landing_hero', lang:CL, date:new Date().toISOString() };
 
   if (LEAD_WEBHOOK) {
     fetch(LEAD_WEBHOOK, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    }).catch(function() {});
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    }).catch(function(){});
   } else {
     window.location.href = 'mailto:contact@psglobal.energy?subject=Demande devis PSG Energy&body=Nom: ' + nom + '%0ATél: ' + tel;
   }
