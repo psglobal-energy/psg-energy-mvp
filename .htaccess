@@ -1,0 +1,25 @@
+Options -Indexes
+RewriteEngine On
+
+# Redirections sans slash final vers index.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^en$ /en/index.html [L]
+RewriteRule ^ar$ /ar/index.html [L]
+RewriteRule ^pt$ /pt/index.html [L]
+RewriteRule ^simulateur$ /simulateur/index.html [L]
+RewriteRule ^admin$ /admin/dashboard.html [L]
+
+# Sécurité : bloquer accès aux fichiers sensibles
+<FilesMatch "\.(json|md|sh|log|env)$">
+  Require all denied
+</FilesMatch>
+
+# Cache statique fonts et assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/webp "access plus 6 months"
+</IfModule>
